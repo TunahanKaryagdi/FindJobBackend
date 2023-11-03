@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "FindJob.Domain/1.0.0": {
+        "runtime": {
+          "FindJob.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FindJob.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,17 @@
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\bin\Debug\net7.0\FindJob.Persistence.deps.json
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\bin\Debug\net7.0\FindJob.Persistence.dll
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\bin\Debug\net7.0\FindJob.Persistence.pdb
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\bin\Debug\net7.0\FindJob.Application.dll
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\bin\Debug\net7.0\FindJob.Domain.dll
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\bin\Debug\net7.0\FindJob.Application.pdb
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\bin\Debug\net7.0\FindJob.Domain.pdb
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\FindJob.Persistence.csproj.AssemblyReference.cache
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\FindJob.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\FindJob.Persistence.AssemblyInfoInputs.cache
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\FindJob.Persistence.AssemblyInfo.cs
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\FindJob.Persistence.csproj.CoreCompileInputs.cache
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\FindJob.Persistence.csproj.CopyComplete
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\FindJob.Persistence.dll
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\refint\FindJob.Persistence.dll
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\FindJob.Persistence.pdb
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\ref\FindJob.Persistence.dll

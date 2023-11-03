@@ -1,0 +1,187 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\backend\\FindJob\\FindJob\\Infrastructure\\FindJob.Persistence\\FindJob.Persistence.csproj": {}
+  },
+  "projects": {
+    "C:\\backend\\FindJob\\FindJob\\Core\\FindJob.Application\\FindJob.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\backend\\FindJob\\FindJob\\Core\\FindJob.Application\\FindJob.Application.csproj",
+        "projectName": "FindJob.Application",
+        "projectPath": "C:\\backend\\FindJob\\FindJob\\Core\\FindJob.Application\\FindJob.Application.csproj",
+        "packagesPath": "C:\\Users\\Tunahan\\.nuget\\packages\\",
+        "outputPath": "C:\\backend\\FindJob\\FindJob\\Core\\FindJob.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Tunahan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\backend\\FindJob\\FindJob\\Core\\FindJob.Domain\\FindJob.Domain.csproj": {
+                "projectPath": "C:\\backend\\FindJob\\FindJob\\Core\\FindJob.Domain\\FindJob.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\backend\\FindJob\\FindJob\\Core\\FindJob.Domain\\FindJob.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\backend\\FindJob\\FindJob\\Core\\FindJob.Domain\\FindJob.Domain.csproj",
+        "projectName": "FindJob.Domain",
+        "projectPath": "C:\\backend\\FindJob\\FindJob\\Core\\FindJob.Domain\\FindJob.Domain.csproj",
+        "packagesPath": "C:\\Users\\Tunahan\\.nuget\\packages\\",
+        "outputPath": "C:\\backend\\FindJob\\FindJob\\Core\\FindJob.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Tunahan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\backend\\FindJob\\FindJob\\Infrastructure\\FindJob.Persistence\\FindJob.Persistence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\backend\\FindJob\\FindJob\\Infrastructure\\FindJob.Persistence\\FindJob.Persistence.csproj",
+        "projectName": "FindJob.Persistence",
+        "projectPath": "C:\\backend\\FindJob\\FindJob\\Infrastructure\\FindJob.Persistence\\FindJob.Persistence.csproj",
+        "packagesPath": "C:\\Users\\Tunahan\\.nuget\\packages\\",
+        "outputPath": "C:\\backend\\FindJob\\FindJob\\Infrastructure\\FindJob.Persistence\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Tunahan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\backend\\FindJob\\FindJob\\Core\\FindJob.Application\\FindJob.Application.csproj": {
+                "projectPath": "C:\\backend\\FindJob\\FindJob\\Core\\FindJob.Application\\FindJob.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
