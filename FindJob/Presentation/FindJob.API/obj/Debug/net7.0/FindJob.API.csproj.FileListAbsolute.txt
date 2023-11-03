@@ -37,3 +37,13 @@ C:\backend\FindJob\FindJob\Presentation\FindJob.API\obj\Debug\net7.0\refint\Find
 C:\backend\FindJob\FindJob\Presentation\FindJob.API\obj\Debug\net7.0\FindJob.API.pdb
 C:\backend\FindJob\FindJob\Presentation\FindJob.API\obj\Debug\net7.0\FindJob.API.genruntimeconfig.cache
 C:\backend\FindJob\FindJob\Presentation\FindJob.API\obj\Debug\net7.0\ref\FindJob.API.dll
+C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\Humanizer.dll
+C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\Npgsql.dll
+C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\System.CodeDom.dll

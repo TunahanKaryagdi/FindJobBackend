@@ -15,3 +15,5 @@ C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\F
 C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\refint\FindJob.Persistence.dll
 C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\FindJob.Persistence.pdb
 C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\ref\FindJob.Persistence.dll
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\bin\Debug\net7.0\FindJob.Persistence.runtimeconfig.json
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Persistence\obj\Debug\net7.0\FindJob.Persistence.genruntimeconfig.cache

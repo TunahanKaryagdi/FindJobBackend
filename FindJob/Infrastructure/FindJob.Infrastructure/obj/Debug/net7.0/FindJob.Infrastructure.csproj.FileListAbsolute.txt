@@ -1,0 +1,17 @@
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\bin\Debug\net7.0\FindJob.Infrastructure.deps.json
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\bin\Debug\net7.0\FindJob.Infrastructure.dll
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\bin\Debug\net7.0\FindJob.Infrastructure.pdb
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\bin\Debug\net7.0\FindJob.Application.dll
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\bin\Debug\net7.0\FindJob.Domain.dll
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\bin\Debug\net7.0\FindJob.Application.pdb
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\bin\Debug\net7.0\FindJob.Domain.pdb
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\obj\Debug\net7.0\FindJob.Infrastructure.csproj.AssemblyReference.cache
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\obj\Debug\net7.0\FindJob.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\obj\Debug\net7.0\FindJob.Infrastructure.AssemblyInfoInputs.cache
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\obj\Debug\net7.0\FindJob.Infrastructure.AssemblyInfo.cs
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\obj\Debug\net7.0\FindJob.Infrastructure.csproj.CoreCompileInputs.cache
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\obj\Debug\net7.0\FindJob.Infrastructure.csproj.CopyComplete
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\obj\Debug\net7.0\FindJob.Infrastructure.dll
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\obj\Debug\net7.0\refint\FindJob.Infrastructure.dll
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\obj\Debug\net7.0\FindJob.Infrastructure.pdb
+C:\backend\FindJob\FindJob\Infrastructure\FindJob.Infrastructure\obj\Debug\net7.0\ref\FindJob.Infrastructure.dll
