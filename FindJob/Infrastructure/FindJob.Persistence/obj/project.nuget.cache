@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pQirUVFEue8Pnjrh8hbCvAIb0Nn1oH7E6MXgw5ZXCu3RCsgaNPDSrlXCEscHVEVqWSAU4rKDgGEYOQvrGHWoJQ==",
+  "dgSpecHash": "HNmMnmmWJzhSrulAfL5WNgc+PhP3KK949RDzMWwr5jIkKM/HkwgBuW8CGw0t6n1ZGWY0nraU+CnuG+JSmn2MPw==",
   "success": true,
   "projectFilePath": "C:\\backend\\FindJob\\FindJob\\Infrastructure\\FindJob.Persistence\\FindJob.Persistence.csproj",
   "expectedPackageFiles": [

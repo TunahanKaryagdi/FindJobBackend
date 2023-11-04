@@ -526,7 +526,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "FindJob.Domain": "1.0.0"
+          "FindJob.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.13"
         },
         "compile": {
           "bin/placeholder/FindJob.Application.dll": {}
