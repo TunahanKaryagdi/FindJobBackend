@@ -1,5 +1,4 @@
-﻿using FindJob.Application.Abstractions;
-using FindJob.Application.Repositories;
+﻿using FindJob.Application.Repositories;
 using FindJob.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,26 +10,29 @@ namespace FindJob.API.Controllers
     public class JobsController : ControllerBase
     {
 
-        private readonly IJobService _jobService;
         private readonly IJobWriteRepository _jobWriteRepository;
+        private readonly IJobReadRepository _jobReadRepository;
 
-        public JobsController(IJobService jobService, IJobWriteRepository jobWriteRepository)
+
+        public JobsController(IJobWriteRepository jobWriteRepository, IJobReadRepository jobReadRepository)
         {
-            _jobService = jobService;
             _jobWriteRepository = jobWriteRepository;
+            _jobReadRepository = jobReadRepository;
         }
 
-        [HttpGet("getall")]
-        public async void Get()
+        [HttpGet("get")]
+        public async Task Get()
         {
-            await _jobWriteRepository.AddRangeAsync(new()
-            {
-                new Job(){Id = Guid.NewGuid(),Date = DateTime.UtcNow,Description = "Good Description",Location = "Konya", Title = "Title Nice"},
-                new Job(){Id = Guid.NewGuid(),Date = DateTime.UtcNow,Description = "Good Description2",Location = "Konya", Title = "Title Nice2"},
-                new Job(){Id = Guid.NewGuid(),Date = DateTime.UtcNow,Description = "Good Description3",Location = "Konya", Title = "Title Nice3"},
-            });
+
+            await _jobWriteRepository.AddAsync(new Job() { Title = "Title", Description = "Description", Location = "Konya" });
             await _jobWriteRepository.SaveAsync();
                 
         }
+        [HttpGet("getall")]
+        public IQueryable<Job> GetAll()
+        {
+            return _jobReadRepository.GetAll();
+        }
+
     }
 }

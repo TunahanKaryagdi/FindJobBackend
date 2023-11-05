@@ -1,6 +1,4 @@
-﻿using FindJob.Application.Abstractions;
-using FindJob.Application.Repositories;
-using FindJob.Persistence.Concretes;
+﻿using FindJob.Application.Repositories;
 using FindJob.Persistence.Contexts;
 using FindJob.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -18,11 +16,10 @@ namespace FindJob.Persistence
 
         public static void AddPersistenceServices(this IServiceCollection services)
         {
-            services.AddSingleton<IJobService,JobService>();
             services.AddDbContext<FindJobDbContext>(options => 
-            options.UseNpgsql(Configuration.ConnectionString),ServiceLifetime.Singleton);
-            services.AddSingleton<IJobReadRepository,JobReadRepository>();
-            services.AddSingleton<IJobWriteRepository, JobWriteRepository>();
+            options.UseNpgsql(Configuration.ConnectionString));
+            services.AddScoped<IJobReadRepository,JobReadRepository>();
+            services.AddScoped<IJobWriteRepository, JobWriteRepository>();
 
         }
 

@@ -1,4 +1,5 @@
 ﻿using FindJob.Domain.Entities;
+using FindJob.Domain.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,20 @@ namespace FindJob.Persistence.Contexts
     {
         public FindJobDbContext(DbContextOptions options) : base(options) { }
         
-        public DbSet<Job> Jobs {  get; set; }        
-        
+        public DbSet<Job> Jobs {  get; set; }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var data = ChangeTracker.Entries<BaseEntity>();
+            foreach (var item in data)
+            {
+                _ = item.State switch
+                {
+                    EntityState.Added => item.Entity.CreatedDate = DateTime.UtcNow,
+                    EntityState.Modified => item.Entity.UpdatedDate = DateTime.UtcNow,
+                };
+            }
+            return base.SaveChangesAsync(cancellationToken);
+        }
     }
 }
