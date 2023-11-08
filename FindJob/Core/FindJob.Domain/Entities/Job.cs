@@ -13,6 +13,7 @@ namespace FindJob.Domain.Entities
         public string Description { get; set; }
         public string Location { get; set; }
         //Category
+        public ICollection<Category> Categories { get; set; }
 
     }
 }
