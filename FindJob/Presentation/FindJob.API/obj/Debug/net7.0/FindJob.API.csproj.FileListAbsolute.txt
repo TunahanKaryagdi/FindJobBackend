@@ -47,3 +47,6 @@ C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\Mono.TextTe
 C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\Npgsql.dll
 C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\System.CodeDom.dll
+C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\MediatR.dll
+C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\MediatR.Contracts.dll
+C:\backend\FindJob\FindJob\Presentation\FindJob.API\bin\Debug\net7.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

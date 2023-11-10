@@ -23,12 +23,16 @@ namespace FindJob.Persistence.Contexts
             var data = ChangeTracker.Entries<BaseEntity>();
             foreach (var item in data)
             {
-                _ = item.State switch
+                if (item.State == EntityState.Added)
                 {
-                    EntityState.Added => item.Entity.CreatedDate = DateTime.UtcNow,
-                    EntityState.Modified => item.Entity.UpdatedDate = DateTime.UtcNow,
-                    _ => DateTime.UtcNow
-                };
+                    item.Entity.UpdatedDate = DateTime.UtcNow;
+                    item.Entity.CreatedDate = DateTime.UtcNow;
+
+                }
+                else if (item.State == EntityState.Modified)
+                {
+                    item.Entity.UpdatedDate = DateTime.UtcNow;
+                }
             }
             return base.SaveChangesAsync(cancellationToken);
         }

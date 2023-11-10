@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "NaMbAwaFi1pc5FoMS9XSnJVDX9WzgrnMd+0kTgcB5yCtkbtZW2OWTEYngZGS6pIstTijN3CSb4FNr4di3pf9nw==",
+  "dgSpecHash": "lqZetpry3uDdCcPcZAahJwyYTt6GEPX/4GTphAIYbLzk/bgyTM8UY7A7wQYCFA4tAkb2FChe/1YLJDgG45bgFQ==",
   "success": true,
   "projectFilePath": "C:\\backend\\FindJob\\FindJob\\Presentation\\FindJob.API\\FindJob.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tunahan\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Tunahan\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\Tunahan\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\Tunahan\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
     "C:\\Users\\Tunahan\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.11\\microsoft.aspnetcore.openapi.7.0.11.nupkg.sha512",
     "C:\\Users\\Tunahan\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.13\\microsoft.entityframeworkcore.7.0.13.nupkg.sha512",
     "C:\\Users\\Tunahan\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.13\\microsoft.entityframeworkcore.abstractions.7.0.13.nupkg.sha512",
