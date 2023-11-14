@@ -1,5 +1,7 @@
 ﻿using FindJob.Domain.Entities;
 using FindJob.Domain.Entities.Common;
+using FindJob.Domain.Entities.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace FindJob.Persistence.Contexts
 {
-    public class FindJobDbContext : DbContext
+    public class FindJobDbContext : IdentityDbContext<AppUser, AppRole, string>
     {
         public FindJobDbContext(DbContextOptions options) : base(options) { }
         
         public DbSet<Job> Jobs {  get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<AppUser> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Category> Categories { get; set; }
 

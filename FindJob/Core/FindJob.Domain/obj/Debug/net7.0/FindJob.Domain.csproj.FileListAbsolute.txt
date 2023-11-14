@@ -9,3 +9,4 @@ C:\backend\FindJob\FindJob\Core\FindJob.Domain\obj\Debug\net7.0\FindJob.Domain.d
 C:\backend\FindJob\FindJob\Core\FindJob.Domain\obj\Debug\net7.0\refint\FindJob.Domain.dll
 C:\backend\FindJob\FindJob\Core\FindJob.Domain\obj\Debug\net7.0\FindJob.Domain.pdb
 C:\backend\FindJob\FindJob\Core\FindJob.Domain\obj\Debug\net7.0\ref\FindJob.Domain.dll
+C:\backend\FindJob\FindJob\Core\FindJob.Domain\obj\Debug\net7.0\FindJob.Domain.csproj.AssemblyReference.cache
