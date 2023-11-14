@@ -16,7 +16,7 @@ namespace FindJob.API.Controllers
         private readonly IMediator _mediator;
 
 
-        public JobsController(IJobWriteRepository jobWriteRepository, IJobReadRepository jobReadRepository, IMediator mediator)
+        public JobsController(IMediator mediator)
         {
             _mediator = mediator;
         }

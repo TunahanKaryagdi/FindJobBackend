@@ -25,6 +25,13 @@ namespace FindJob.API.Controllers
             return Ok(createUserDto);
         }
 
+        [HttpPost("signin")]
+        public async Task<IActionResult> SignIn(SignInCommand signInCommand)
+        {
+            SignInDto signInDto = await _mediator.Send(signInCommand);
+            return Ok(signInDto);
+        }
+
 
     }
 }
