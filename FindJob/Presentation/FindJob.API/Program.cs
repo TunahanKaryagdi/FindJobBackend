@@ -1,5 +1,9 @@
 using FindJob.Application;
+using FindJob.Infrastructure;
 using FindJob.Persistence;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,11 +11,28 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer("Admin",options =>
+    {
+        options.TokenValidationParameters = new()
+        {
+            ValidateAudience = true,
+            ValidateIssuer = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+
+            ValidAudience = builder.Configuration["TokenOptions:Audience"],
+            ValidIssuer = builder.Configuration["TokenOptions:Issuer"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("TokenOptions:SecurityKey"))
+        };
+    });
 
 var app = builder.Build();
 
@@ -26,6 +47,7 @@ app.UseHttpsRedirection();
 
 app.UseCors();
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 

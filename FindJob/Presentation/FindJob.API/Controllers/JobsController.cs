@@ -4,12 +4,14 @@ using FindJob.Application.Features.Jobs.Queries;
 using FindJob.Application.Repositories;
 using FindJob.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FindJob.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = "Admin")]
     public class JobsController : ControllerBase
     {
 
