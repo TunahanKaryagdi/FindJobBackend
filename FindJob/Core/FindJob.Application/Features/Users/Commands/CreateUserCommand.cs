@@ -12,8 +12,7 @@ namespace FindJob.Application.Features.Users.Commands
 {
     public class CreateUserCommand : IRequest<CreateUserDto>
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        public string NameSurname { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
 
@@ -32,10 +31,9 @@ namespace FindJob.Application.Features.Users.Commands
                 IdentityResult result = await _userManager.CreateAsync(new AppUser()
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Name = request.Name,
-                    Surname = request.Surname,
+                    NameSurname = request.NameSurname,
                     Email = request.Email,
-                    UserName = Guid.NewGuid().ToString(),
+                    UserName = request.Email,
                 }, request.Password);
                
                 CreateUserDto createUserDto = new CreateUserDto();

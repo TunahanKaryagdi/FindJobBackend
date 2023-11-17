@@ -24,12 +24,12 @@ namespace FindJob.Infrastructure.Services
             Token token = new Token();
             SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["TokenOptions:SecurityKey"]));
             SigningCredentials signingCredentials = new SigningCredentials(key,SecurityAlgorithms.HmacSha256);
-            token.ExpirationTime = DateTime.UtcNow.AddMinutes(Convert.ToDouble(_configuration["TokenOptions:AccessTokenExpiration"]));
+            token.ExpirationTime = DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["TokenOptions:AccessTokenExpiration"]));
             JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
                 audience : _configuration["TokenOptions:Audience"],
                 issuer: _configuration["TokenOptions:Issuer"],
                 expires: token.ExpirationTime,
-                notBefore: DateTime.UtcNow,
+                notBefore: DateTime.Now,
                 signingCredentials: signingCredentials
             );
 

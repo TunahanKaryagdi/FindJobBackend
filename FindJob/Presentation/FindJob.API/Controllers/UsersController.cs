@@ -32,6 +32,13 @@ namespace FindJob.API.Controllers
             return Ok(signInDto);
         }
 
+        [HttpPost("googlesignin")]
+        public async Task<IActionResult> SignInWithGoogle(SignInWithGoogleCommand signInWithGoogleCommand)
+        {
+            SignInWithGoogleDto signInWithGoogleDto = await _mediator.Send(signInWithGoogleCommand);
+            return Ok(signInWithGoogleDto);
+        }
+
 
     }
 }
