@@ -1,20 +1,16 @@
-﻿using FindJob.Application.Features.Jobs.Dtos;
+﻿using Core.Utilities.Results;
+using FindJob.Application.Features.Jobs.Dtos;
+using FindJob.Application.Features.Qualification.Dtos;
 using FindJob.Application.Repositories;
-using FindJob.Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Application.Features.Jobs.Queries
 {
-    public class GetAllJobsQuery : IRequest<GetAllJobsDto>
+    public class GetAllJobsQuery : IRequest<IDataResult<List<JobDto>>>
     {
         public int PageNumber { get; set; } = 0;
 
-        public class GetAllJobsQueryHandler : IRequestHandler<GetAllJobsQuery, GetAllJobsDto>
+        public class GetAllJobsQueryHandler : IRequestHandler<GetAllJobsQuery, IDataResult<List<JobDto>>>
         {
             private readonly IJobReadRepository _jobReadRepository;
 
@@ -23,7 +19,7 @@ namespace FindJob.Application.Features.Jobs.Queries
                 _jobReadRepository = jobReadRepository;
             }
 
-            public async Task<GetAllJobsDto> Handle(GetAllJobsQuery request, CancellationToken cancellationToken)
+            public  async Task<IDataResult<List<JobDto>>> Handle(GetAllJobsQuery request, CancellationToken cancellationToken)
             {
                 int TotalCount = _jobReadRepository.GetAll().Count();
                 List<JobDto> jobs = _jobReadRepository.GetAll().Skip(request.PageNumber * 20).Take(20)
@@ -31,19 +27,22 @@ namespace FindJob.Application.Features.Jobs.Queries
                     {
                         Id = j.Id.ToString(),
                         CreatedDate = j.CreatedDate,
-                        Description = j.Description,
                         Location = j.Location,
+                        Company = new Company.Dtos.CompanyDto { Id = j.Company.Id.ToString(),CreatedDate = j.Company.CreatedDate,Name = j.Company.Name, UpdatedDate = j.Company.UpdatedDate },
+                        Salary = j.Salary,
+                        Type = j.Type,
+                        Qualifications = j.Qualifications.Select(q => new QualificationDto { Id = q.Id.ToString(), JobId = q.JobId.ToString(), CreatedDate = q.CreatedDate, Name = q.Name, UpdatedDate = q.UpdatedDate }).ToList(),
+                        User = new Users.Dtos.UserDto { Id = j.User.Id.ToString(),Email = j.User.Email,NameSurname = j.User.NameSurname},
                         Title = j.Title,
-                        UpdatedDate =j.UpdatedDate,
-                        Categories = j.Categories
+                        UpdatedDate = j.UpdatedDate,
                     }).ToList();
 
 
-                return new GetAllJobsDto()
-                {
-                    Jobs = jobs,
-                };
+                return new SuccessDataResult<List<JobDto>>(jobs,"successfully get data");
+                
             }
+
+           
         }
     }
 }

@@ -1,9 +1,7 @@
-﻿using FindJob.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FindJob.Application.Features.Company.Dtos;
+using FindJob.Application.Features.Qualification.Dtos;
+using FindJob.Application.Features.Users.Dtos;
+using FindJob.Domain.Entities;
 
 namespace FindJob.Application.Features.Jobs.Dtos
 {
@@ -13,8 +11,11 @@ namespace FindJob.Application.Features.Jobs.Dtos
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public string Title { get; set; }
-        public string Description { get; set; }
         public string Location { get; set; }
-        public ICollection<Category> Categories { get; set; }
+        public List<QualificationDto> Qualifications { get; set; }
+        public double Salary { get; set; }
+        public CompanyDto Company { get; set; }
+        public string Type { get; set; }
+        public UserDto User { get; set; }
     }
 }

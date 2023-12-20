@@ -3,17 +3,10 @@ using FindJob.Application.Features.Users.Dtos;
 using FindJob.Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Metadata;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Application.Features.Users.Commands
 {
-    public class SignInCommand : IRequest<SignInDto> 
+    public class SignInCommand : IRequest<SignInDto>
     {
 
         public string Email { get; set; }
@@ -35,11 +28,11 @@ namespace FindJob.Application.Features.Users.Commands
 
             public async Task<SignInDto> Handle(SignInCommand request, CancellationToken cancellationToken)
             {
-               
+
                 AppUser user = await _userManager.FindByEmailAsync(request.Email);
                 if (user == null)
                 {
-                    throw new  Exception("cannot find user");
+                    throw new Exception("cannot find user");
                 }
                 SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
                 if (result.Succeeded)

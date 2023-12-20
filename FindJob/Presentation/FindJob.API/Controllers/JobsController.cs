@@ -1,17 +1,14 @@
-﻿using FindJob.Application.Features.Jobs.Commands;
+﻿using Core.Utilities.Results;
+using FindJob.Application.Features.Jobs.Commands;
 using FindJob.Application.Features.Jobs.Dtos;
 using FindJob.Application.Features.Jobs.Queries;
-using FindJob.Application.Repositories;
-using FindJob.Domain.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FindJob.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = "Admin")]
     public class JobsController : ControllerBase
     {
 
@@ -27,37 +24,59 @@ namespace FindJob.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(CreateJobCommand createJobCommand)
         {
-            CreateJobDto createJobDto = await _mediator.Send(createJobCommand);
-            return Ok(createJobDto);
+            
+            var result = await _mediator.Send(createJobCommand);
+            
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
 
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] GetAllJobsQuery getAllJobsQuery)
         {
-            GetAllJobsDto getAllJobsDto = await _mediator.Send(getAllJobsQuery);
-            return Ok(getAllJobsDto);
+            var result = await _mediator.Send(getAllJobsQuery);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
         [HttpGet("{Id}")]
         public async Task<IActionResult> GetById([FromRoute] GetJobByIdQuery getJobByIdQuery)
         {
-            JobDto getJobByIdDto = await _mediator.Send(getJobByIdQuery);
-            return Ok(getJobByIdDto);
+            var result  = await _mediator.Send(getJobByIdQuery);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
         [HttpDelete("{Id}")]
         public async Task<IActionResult> DeleteById([FromRoute] DeleteJobByIdCommand deleteJobByIdCommand)
         {
-            DeleteJobByIdDto deleteJobByIdDto = await _mediator.Send(deleteJobByIdCommand);
-            return Ok(deleteJobByIdDto);
+            var result = await _mediator.Send(deleteJobByIdCommand);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
         [HttpPut]
         public async Task<IActionResult> Update(UpdateJobByIdCommand updateJobByIdCommand)
         {
-            UpdateJobDto updateJobDto = await _mediator.Send(updateJobByIdCommand);
-            return Ok(updateJobDto);
+            var result = await _mediator.Send(updateJobByIdCommand);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
 

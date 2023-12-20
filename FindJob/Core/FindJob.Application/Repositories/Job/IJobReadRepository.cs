@@ -1,13 +1,11 @@
 ﻿using FindJob.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Application.Repositories
 {
     public interface IJobReadRepository : IReadRepository<Job>
     {
+
+        Task<Job?> ReadWithNavigations(string id);
+
     }
 }

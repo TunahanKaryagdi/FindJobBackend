@@ -3,22 +3,19 @@ using FindJob.Domain.Entities.Common;
 using FindJob.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Persistence.Contexts
 {
-    public class FindJobDbContext : IdentityDbContext<AppUser, AppRole, string>
+    public class FindJobDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
         public FindJobDbContext(DbContextOptions options) : base(options) { }
-        
-        public DbSet<Job> Jobs {  get; set; }
+
+        public DbSet<Job> Jobs { get; set; }
         public DbSet<AppUser> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        //public DbSet<Category> Categories { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Qualification> Qualifications { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

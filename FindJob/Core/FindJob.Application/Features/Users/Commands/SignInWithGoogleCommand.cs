@@ -4,11 +4,6 @@ using FindJob.Domain.Entities.Identity;
 using Google.Apis.Auth;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Application.Features.Users.Commands
 {
@@ -39,20 +34,21 @@ namespace FindJob.Application.Features.Users.Commands
             {
                 var settings = new GoogleJsonWebSignature.ValidationSettings()
                 {
-                    Audience = new List<String> { "149429631601-56vf5u2b3t2v83sqpvb9i4m41nktlp3i.apps.googleusercontent.com"}
+                    Audience = new List<String> { "149429631601-56vf5u2b3t2v83sqpvb9i4m41nktlp3i.apps.googleusercontent.com" }
                 };
                 var payload = await GoogleJsonWebSignature.ValidateAsync(request.IdToken, settings);
-                var info = new UserLoginInfo(request.Provider, payload.Subject,request.Provider);
-                AppUser user = await  _userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
+                var info = new UserLoginInfo(request.Provider, payload.Subject, request.Provider);
+                AppUser user = await _userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
                 //info dış kaynaktaki bilgileri ve veri tabanında ayrı bir tablodu tutulmaktadır.
                 bool result = user != null;
-                if(user == null) {
+                if (user == null)
+                {
                     user = await _userManager.FindByEmailAsync(payload.Email);
                     if (user == null)
                     {
                         user = new AppUser()
                         {
-                            Id = Guid.NewGuid().ToString(),
+                            Id = Guid.NewGuid(),
                             Email = payload.Email,
                             UserName = payload.Email,
                             NameSurname = payload.Name
@@ -67,12 +63,13 @@ namespace FindJob.Application.Features.Users.Commands
                     throw new Exception("Invalid external authentication");
 
                 Token token = _tokenHelper.CreateAccessToken();
-                
-                return new SuccessSignInWithGoogleDto() { 
-                    Token = token,  
+
+                return new SuccessSignInWithGoogleDto()
+                {
+                    Token = token,
                     Success = true,
                     Message = "Successfully login"
-                };       
+                };
             }
         }
     }

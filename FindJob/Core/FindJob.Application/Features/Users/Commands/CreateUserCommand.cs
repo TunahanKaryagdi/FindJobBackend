@@ -2,11 +2,6 @@
 using FindJob.Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Application.Features.Users.Commands
 {
@@ -30,12 +25,12 @@ namespace FindJob.Application.Features.Users.Commands
             {
                 IdentityResult result = await _userManager.CreateAsync(new AppUser()
                 {
-                    Id = Guid.NewGuid().ToString(),
+                    Id = Guid.NewGuid(),
                     NameSurname = request.NameSurname,
                     Email = request.Email,
                     UserName = request.Email,
                 }, request.Password);
-               
+
                 CreateUserDto createUserDto = new CreateUserDto();
                 if (result.Succeeded)
                 {
@@ -45,7 +40,7 @@ namespace FindJob.Application.Features.Users.Commands
                 }
                 createUserDto.Success = false;
                 createUserDto.Message = "Register failed";
-                return createUserDto;   
+                return createUserDto;
 
             }
         }

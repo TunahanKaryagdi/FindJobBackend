@@ -3,17 +3,12 @@ using FindJob.Domain.Entities.Common;
 using FindJob.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Persistence.Repositories
 {
     public class WriteRepository<T> : IWriteRepository<T> where T : BaseEntity
     {
-        
+
         private readonly FindJobDbContext _context;
 
         public WriteRepository(FindJobDbContext context)
@@ -22,10 +17,11 @@ namespace FindJob.Persistence.Repositories
         }
         public DbSet<T> Table => _context.Set<T>();
 
-        public async Task<bool> AddAsync(T model)
+        public async Task<T> AddAsync(T model)
         {
-            EntityEntry<T> entityEntry = await  Table.AddAsync(model);
-            return entityEntry.State == EntityState.Added;
+            EntityEntry<T> entityEntry = await Table.AddAsync(model);
+            return entityEntry.Entity;
+            //return entityEntry.State == EntityState.Added;
         }
 
         public async Task<bool> AddRangeAsync(List<T> models)
@@ -55,7 +51,7 @@ namespace FindJob.Persistence.Repositories
 
         public async Task<int> SaveAsync()
         {
-            return await _context.SaveChangesAsync();   
+            return await _context.SaveChangesAsync();
         }
 
         public bool Update(T model)

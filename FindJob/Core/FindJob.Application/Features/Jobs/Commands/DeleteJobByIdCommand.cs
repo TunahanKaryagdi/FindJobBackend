@@ -1,19 +1,15 @@
-﻿using FindJob.Application.Features.Jobs.Dtos;
+﻿using Core.Utilities.Results;
+using FindJob.Application.Features.Jobs.Dtos;
 using FindJob.Application.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Application.Features.Jobs.Commands
 {
-    public class DeleteJobByIdCommand : IRequest<DeleteJobByIdDto>
+    public class DeleteJobByIdCommand : IRequest<IResult>
     {
         public string Id { get; set; }
 
-        public class DeleteJobByIdCommandHandler : IRequestHandler<DeleteJobByIdCommand, DeleteJobByIdDto>
+        public class DeleteJobByIdCommandHandler : IRequestHandler<DeleteJobByIdCommand, IResult>
         {
             private readonly IJobWriteRepository _jobWriteRepository;
 
@@ -22,14 +18,11 @@ namespace FindJob.Application.Features.Jobs.Commands
                 _jobWriteRepository = jobWriteRepository;
             }
 
-            public async Task<DeleteJobByIdDto> Handle(DeleteJobByIdCommand request, CancellationToken cancellationToken)
+            public async Task<IResult> Handle(DeleteJobByIdCommand request, CancellationToken cancellationToken)
             {
                 bool isSuccess = await _jobWriteRepository.RemoveAsync(request.Id);
-                _jobWriteRepository.SaveAsync();
-                return new DeleteJobByIdDto()
-                {
-                    Message = isSuccess ? "Successfully Deleted ": "Deletion Failed" 
-                };
+                await _jobWriteRepository.SaveAsync();
+                return isSuccess ? new SuccessResult("deleted successfully") : new ErrorResult("delete failed");
             }
         }
     }

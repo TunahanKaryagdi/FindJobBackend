@@ -1,38 +1,47 @@
-﻿using FindJob.Application.Features.Jobs.Dtos;
+﻿using Core.Utilities.Results;
+using FindJob.Application.Features.Jobs.Dtos;
 using FindJob.Application.Repositories;
 using FindJob.Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Application.Features.Jobs.Commands
 {
-    public class UpdateJobByIdCommand : IRequest<UpdateJobDto>
+    public class UpdateJobByIdCommand : IRequest<IDataResult<Job>>
     {
-        public string Id { get; set;}
-        public string Title { get; set;}
-        public string Description { get; set;}
-        public string Location { get; set;}
+        public string Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Location { get; set; }
+        public string Type { get; set; }
+        public string CompanyId { get; set; }
+        public string UserId { get; set; }
 
-        public class UpdateJobByIdCommandHandler : IRequestHandler<UpdateJobByIdCommand, UpdateJobDto>
+        public class UpdateJobByIdCommandHandler : IRequestHandler<UpdateJobByIdCommand, IDataResult<Job>>
         {
 
             private readonly IJobWriteRepository _jobWriteRepository;
-            public UpdateJobByIdCommandHandler(IJobWriteRepository jobWriteRepository)
+            private readonly IJobReadRepository _jobReadRepository;
+
+            public UpdateJobByIdCommandHandler(IJobReadRepository jobReadRepository, IJobWriteRepository jobWriteRepository)
             {
+                _jobReadRepository = jobReadRepository;
                 _jobWriteRepository = jobWriteRepository;
             }
-            public async Task<UpdateJobDto> Handle(UpdateJobByIdCommand request, CancellationToken cancellationToken)
+
+
+            public async Task<IDataResult<Job>> Handle(UpdateJobByIdCommand request, CancellationToken cancellationToken)
             {
-                bool isSuccess =  _jobWriteRepository.Update(new Job() { Id = Guid.Parse(request.Id), Title = request.Title, Description = request.Description, Location = request.Location, UpdatedDate = DateTime.UtcNow });
-                _jobWriteRepository.SaveAsync();
-                return new UpdateJobDto()
-                {
-                    Message = isSuccess ? "Successfully updated" : "Update failed"
-                };
+
+                Job job = await _jobReadRepository.GetByIdAsync(request.Id);
+                job.Title = request.Title;
+                job.Location = request.Location;
+                job.Type = request.Type;
+                job.UserId = Guid.Parse(request.UserId);
+                job.CompanyId = Guid.Parse(request.CompanyId);
+
+                bool isSuccess = _jobWriteRepository.Update(job);
+                await _jobWriteRepository.SaveAsync();
+                return new SuccessDataResult<Job>("job updated");
             }
         }
     }

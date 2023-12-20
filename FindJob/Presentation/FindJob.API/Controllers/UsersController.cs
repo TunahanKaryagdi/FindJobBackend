@@ -1,7 +1,6 @@
 ﻿using FindJob.Application.Features.Users.Commands;
 using FindJob.Application.Features.Users.Dtos;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FindJob.API.Controllers
@@ -21,6 +20,7 @@ namespace FindJob.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateUserCommand createUserCommand)
         {
+
             CreateUserDto createUserDto = await _mediator.Send(createUserCommand);
             return Ok(createUserDto);
         }

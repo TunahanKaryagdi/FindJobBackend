@@ -1,41 +1,50 @@
-﻿using FindJob.Application.Features.Jobs.Dtos;
+﻿using Core.Utilities.Results;
+using FindJob.Application.Features.Jobs.Dtos;
 using FindJob.Application.Repositories;
+using FindJob.Application.Services;
 using FindJob.Domain.Entities;
+using FindJob.Domain.Entities.Identity;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Application.Features.Jobs.Commands
 {
-    public class CreateJobCommand : IRequest<CreateJobDto>
+    public class CreateJobCommand : IRequest<IResult>
     {
         public string Title { get; set; }
-        public string Description { get; set; }
         public string Location { get; set; }
+        public double Salary { get; set; }
+        public List<CreateQualificationDto> Qualifications { get; set; }
+        public string Type { get; set; }
+        public string CompanyId { get; set; }
+        public string UserId { get; set; }
 
 
 
-        public class CreateJobCommandHandler : IRequestHandler<CreateJobCommand, CreateJobDto>
+        public class CreateJobCommandHandler : IRequestHandler<CreateJobCommand, IResult>
         {
-            private readonly IJobWriteRepository _jobWriteRepository;
-            public CreateJobCommandHandler(IJobWriteRepository jobWriteRepository)
+            private readonly IJobService _jobService;
+
+            public CreateJobCommandHandler(IJobService jobService)
             {
-                _jobWriteRepository = jobWriteRepository;
+                _jobService = jobService;
             }
 
-            public async Task<CreateJobDto> Handle(CreateJobCommand request, CancellationToken cancellationToken)
+            public async Task<IResult> Handle(CreateJobCommand request, CancellationToken cancellationToken)
             {
 
-                bool isSuccess = await _jobWriteRepository.AddAsync(new Job() { Description = request.Description, Location = request.Location, Title = request.Title });
-                _jobWriteRepository.SaveAsync();
-                return new CreateJobDto
+                Job job = await _jobService.CreateJob(new Job
                 {
-                    Message = isSuccess ? "successfully added" : "addition failed"
+                    Title = request.Title,
+                    Location = request.Location,
+                    Salary = request.Salary,
+                    Type = request.Type,
+                    Qualifications = request.Qualifications.Select(q=> new Domain.Entities.Qualification { Name =  q.Name }).ToList(),
+                    CompanyId = Guid.Parse(request.CompanyId),
+                    UserId = Guid.Parse(request.UserId),       
+                });
 
-                };
+
+                return new SuccessResult("successfully added");
 
             }
         }
