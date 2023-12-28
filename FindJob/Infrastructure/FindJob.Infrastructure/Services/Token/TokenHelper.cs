@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 namespace FindJob.Infrastructure.Services
@@ -15,13 +16,18 @@ namespace FindJob.Infrastructure.Services
             _configuration = configuration;
         }
 
-        public Token CreateAccessToken()
+        public Token CreateAccessToken(string userId)
         {
             Token token = new Token();
             SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["TokenOptions:SecurityKey"]));
             SigningCredentials signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             token.ExpirationTime = DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["TokenOptions:AccessTokenExpiration"]));
             JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
+                claims : new List<Claim> 
+                { 
+                    new Claim(ClaimTypes.NameIdentifier,userId),  
+                 
+                },
                 audience: _configuration["TokenOptions:Audience"],
                 issuer: _configuration["TokenOptions:Issuer"],
                 expires: token.ExpirationTime,

@@ -1,5 +1,6 @@
 ﻿
 using FindJob.Application.Repositories;
+using FindJob.Application.Repositories.Application;
 using FindJob.Application.Services;
 using FindJob.Domain.Entities.Identity;
 using FindJob.Persistence.Contexts;
@@ -31,7 +32,8 @@ namespace FindJob.Persistence
             services.AddScoped<ICompanyReadRepository, CompanyReadRepository>();
             services.AddScoped<IQualificationReadRepository, QualificationReadRepository>();
             services.AddScoped<IQualificationWriteRepository, QualificationWriteRepository>();
-
+            services.AddScoped<IApplicationReadRepository, ApplicationReadRepository>();
+            services.AddScoped<IApplicationWriteRepository, ApplicationWriteRepository>();
 
 
         }

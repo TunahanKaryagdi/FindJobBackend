@@ -62,7 +62,7 @@ namespace FindJob.Application.Features.Users.Commands
                 else
                     throw new Exception("Invalid external authentication");
 
-                Token token = _tokenHelper.CreateAccessToken();
+                Token token = _tokenHelper.CreateAccessToken(user.Id.ToString());
 
                 return new SuccessSignInWithGoogleDto()
                 {

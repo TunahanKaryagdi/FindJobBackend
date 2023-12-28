@@ -37,6 +37,33 @@ namespace FindJob.Persistence.Migrations
                     b.ToTable("AppUserRole");
                 });
 
+            modelBuilder.Entity("FindJob.Domain.Entities.Application", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("JobId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JobId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Applications");
+                });
+
             modelBuilder.Entity("FindJob.Domain.Entities.Company", b =>
                 {
                     b.Property<Guid>("Id")
@@ -359,6 +386,25 @@ namespace FindJob.Persistence.Migrations
                         .HasForeignKey("rolesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FindJob.Domain.Entities.Application", b =>
+                {
+                    b.HasOne("FindJob.Domain.Entities.Job", "Job")
+                        .WithMany()
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FindJob.Domain.Entities.Identity.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Job");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("FindJob.Domain.Entities.Job", b =>

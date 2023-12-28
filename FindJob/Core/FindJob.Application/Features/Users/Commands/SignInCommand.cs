@@ -1,4 +1,5 @@
-﻿using FindJob.Application.Abstractions.Token;
+﻿using Core.Utilities.Results;
+using FindJob.Application.Abstractions.Token;
 using FindJob.Application.Features.Users.Dtos;
 using FindJob.Domain.Entities.Identity;
 using MediatR;
@@ -6,13 +7,13 @@ using Microsoft.AspNetCore.Identity;
 
 namespace FindJob.Application.Features.Users.Commands
 {
-    public class SignInCommand : IRequest<SignInDto>
+    public class SignInCommand : IRequest<IDataResult<string>>
     {
 
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public class SignInCommandHandler : IRequestHandler<SignInCommand, SignInDto>
+        public class SignInCommandHandler : IRequestHandler<SignInCommand, IDataResult<string>>
         {
 
             private readonly UserManager<AppUser> _userManager;
@@ -26,7 +27,7 @@ namespace FindJob.Application.Features.Users.Commands
                 _tokenHelper = tokenHelper;
             }
 
-            public async Task<SignInDto> Handle(SignInCommand request, CancellationToken cancellationToken)
+            public async Task<IDataResult<string>> Handle(SignInCommand request, CancellationToken cancellationToken)
             {
 
                 AppUser user = await _userManager.FindByEmailAsync(request.Email);
@@ -37,16 +38,11 @@ namespace FindJob.Application.Features.Users.Commands
                 SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
                 if (result.Succeeded)
                 {
-                    SuccessSignInDto successSignInDto = new SuccessSignInDto();
-                    successSignInDto.Success = true;
-                    successSignInDto.Message = "succesfully sign in";
-                    successSignInDto.Token = _tokenHelper.CreateAccessToken();
-                    return successSignInDto;
+                    var token = _tokenHelper.CreateAccessToken(user.Id.ToString());
+                    return new SuccessDataResult<string>(data: token.AccessToken,message: "successfully login");
                 }
-                ErrorSignInDto errorSignInDto = new ErrorSignInDto();
-                errorSignInDto.Success = false;
-                errorSignInDto.Message = "sign in failed";
-                return errorSignInDto;
+                
+                return new ErrorDataResult<string>("failed");
             }
         }
     }

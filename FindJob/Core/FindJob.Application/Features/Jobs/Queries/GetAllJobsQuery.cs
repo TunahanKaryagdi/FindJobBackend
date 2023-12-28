@@ -8,7 +8,7 @@ namespace FindJob.Application.Features.Jobs.Queries
 {
     public class GetAllJobsQuery : IRequest<IDataResult<List<JobDto>>>
     {
-        public int PageNumber { get; set; } = 0;
+        public int Page { get; set; } = 1;
 
         public class GetAllJobsQueryHandler : IRequestHandler<GetAllJobsQuery, IDataResult<List<JobDto>>>
         {
@@ -21,8 +21,7 @@ namespace FindJob.Application.Features.Jobs.Queries
 
             public  async Task<IDataResult<List<JobDto>>> Handle(GetAllJobsQuery request, CancellationToken cancellationToken)
             {
-                int TotalCount = _jobReadRepository.GetAll().Count();
-                List<JobDto> jobs = _jobReadRepository.GetAll().Skip(request.PageNumber * 20).Take(20)
+                List<JobDto> jobs = _jobReadRepository.GetAll().Skip((request.Page-1) * 20).Take(20)
                     .Select(j => new JobDto()
                     {
                         Id = j.Id.ToString(),

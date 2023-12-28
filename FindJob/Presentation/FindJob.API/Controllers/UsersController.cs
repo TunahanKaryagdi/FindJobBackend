@@ -21,15 +21,23 @@ namespace FindJob.API.Controllers
         public async Task<IActionResult> Create(CreateUserCommand createUserCommand)
         {
 
-            CreateUserDto createUserDto = await _mediator.Send(createUserCommand);
-            return Ok(createUserDto);
+            var result = await _mediator.Send(createUserCommand);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
         [HttpPost("signin")]
         public async Task<IActionResult> SignIn(SignInCommand signInCommand)
         {
-            SignInDto signInDto = await _mediator.Send(signInCommand);
-            return Ok(signInDto);
+            var result = await _mediator.Send(signInCommand);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
         [HttpPost("googlesignin")]
@@ -38,7 +46,6 @@ namespace FindJob.API.Controllers
             SignInWithGoogleDto signInWithGoogleDto = await _mediator.Send(signInWithGoogleCommand);
             return Ok(signInWithGoogleDto);
         }
-
 
     }
 }

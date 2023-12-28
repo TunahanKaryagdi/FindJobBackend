@@ -16,6 +16,7 @@ namespace FindJob.Persistence.Contexts
         //public DbSet<Category> Categories { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Qualification> Qualifications { get; set; }
+        public DbSet<FindJob.Domain.Entities.Application> Applications { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
