@@ -15,5 +15,6 @@ namespace FindJob.Application.Features.Applications.Dtos
         public DateTime UpdatedDate { get; set;}
         public JobDto Job { get; set; }
         public UserDto User{ get; set; }
+        public bool Status { get; set; }
     }
 }

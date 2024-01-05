@@ -45,6 +45,7 @@ namespace FindJob.Application.Features.Applications.Queries
                             NameSurname = a.User.NameSurname,
                             Email = a.User.Email
                         },
+                        Status = a.Status
                     }
                 ).ToList();
                 

@@ -30,9 +30,10 @@ namespace FindJob.Application.Features.Applications.Commands
                 {
                     UserId = Guid.Parse(request.UserId),
                     JobId = Guid.Parse(request.JobId),
+                    Status = false
                 });
                 await _applicationWriteRepository.SaveAsync();
-                return new SuccessResult { };
+                return new SuccessResult ("successfully added");
             }
         }
 

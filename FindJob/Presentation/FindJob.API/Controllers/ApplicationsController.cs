@@ -41,5 +41,16 @@ namespace FindJob.API.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpGet("{UserId}")]
+        public async Task<IActionResult> GetByUserId([FromRoute] GetApplicationsByUserIdQuery getApplicationsByUserIdQuery)
+        {
+            var result = await _mediator.Send(getApplicationsByUserIdQuery);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

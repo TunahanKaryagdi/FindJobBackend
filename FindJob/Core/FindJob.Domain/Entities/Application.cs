@@ -12,6 +12,7 @@ namespace FindJob.Domain.Entities
     {
         public Guid UserId { get; set; }
         public Guid JobId { get; set; }
+        public bool Status { get; set; }
         public AppUser User { get; set; }
         public Job Job { get; set; }
 

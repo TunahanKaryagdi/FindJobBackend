@@ -49,6 +49,9 @@ namespace FindJob.Persistence.Migrations
                     b.Property<Guid>("JobId")
                         .HasColumnType("uuid");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("boolean");
+
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
@@ -270,6 +273,32 @@ namespace FindJob.Persistence.Migrations
                     b.ToTable("Roles");
                 });
 
+            modelBuilder.Entity("FindJob.Domain.Entities.Skill", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Skill");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
@@ -437,6 +466,17 @@ namespace FindJob.Persistence.Migrations
                     b.Navigation("Job");
                 });
 
+            modelBuilder.Entity("FindJob.Domain.Entities.Skill", b =>
+                {
+                    b.HasOne("FindJob.Domain.Entities.Identity.AppUser", "User")
+                        .WithMany("Skills")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.HasOne("FindJob.Domain.Entities.Identity.AppRole", null)
@@ -491,6 +531,11 @@ namespace FindJob.Persistence.Migrations
             modelBuilder.Entity("FindJob.Domain.Entities.Company", b =>
                 {
                     b.Navigation("Jobs");
+                });
+
+            modelBuilder.Entity("FindJob.Domain.Entities.Identity.AppUser", b =>
+                {
+                    b.Navigation("Skills");
                 });
 
             modelBuilder.Entity("FindJob.Domain.Entities.Job", b =>
