@@ -1,5 +1,4 @@
-﻿using FindJob.Application.Features.Jobs.Queries;
-using FindJob.Application.Features.Users.Commands;
+﻿using FindJob.Application.Features.Users.Commands;
 using FindJob.Application.Features.Users.Dtos;
 using FindJob.Application.Features.Users.Queries;
 using MediatR;

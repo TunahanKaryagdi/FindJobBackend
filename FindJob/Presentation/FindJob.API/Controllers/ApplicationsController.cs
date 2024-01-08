@@ -1,8 +1,6 @@
 ﻿using FindJob.Application.Features.Applications.Commands;
 using FindJob.Application.Features.Applications.Queries;
-using FindJob.Application.Features.Jobs.Commands;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FindJob.API.Controllers
@@ -42,10 +40,21 @@ namespace FindJob.API.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("{UserId}")]
+        [HttpGet("User/{UserId}")]
         public async Task<IActionResult> GetByUserId([FromRoute] GetApplicationsByUserIdQuery getApplicationsByUserIdQuery)
         {
             var result = await _mediator.Send(getApplicationsByUserIdQuery);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("Job/{JobId}")]
+        public async Task<IActionResult> GetByJobId([FromRoute] GetApplicationsByJobIdQuery getApplicationsByJobIdQuery)
+        {
+            var result = await _mediator.Send(getApplicationsByJobIdQuery);
             if (result.Success)
             {
                 return Ok(result);

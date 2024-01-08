@@ -36,7 +36,7 @@ namespace FindJob.Application.Features.Jobs.Queries
                     Title = job.Title,
                     UpdatedDate = job.UpdatedDate,
                 };
-                return new SuccessDataResult<JobDto>(jobDto,"get job successfully");
+                return new SuccessDataResult<JobDto>(jobDto, "get job successfully");
             }
         }
     }

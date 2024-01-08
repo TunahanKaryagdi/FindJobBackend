@@ -3,13 +3,7 @@ using FindJob.Application.Features.Users.Dtos;
 using FindJob.Application.Repositories;
 using FindJob.Application.Services;
 using FindJob.Domain.Entities.Identity;
-using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Persistence.Services
 {
@@ -26,7 +20,7 @@ namespace FindJob.Persistence.Services
 
 
 
-        public async  Task<UserDetailDto> GetUserById(string id)
+        public async Task<UserDetailDto> GetUserById(string id)
         {
             AppUser user = await _userManager.FindByIdAsync(id);
             if (user == null)

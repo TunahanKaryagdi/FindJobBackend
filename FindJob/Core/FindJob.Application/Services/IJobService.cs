@@ -1,11 +1,4 @@
-﻿using FindJob.Application.Features.Jobs.Commands;
-using FindJob.Application.Features.Jobs.Dtos;
-using FindJob.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FindJob.Domain.Entities;
 
 namespace FindJob.Application.Services
 {

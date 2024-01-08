@@ -14,9 +14,9 @@ namespace FindJob.Persistence.Repositories
         public async Task<Job?> ReadWithNavigations(string id)
         {
             return await Table.Where(j => j.Id == Guid.Parse(id))
-                .Include(j=> j.Company)
-                .Include(j=>j.Qualifications)
-                .Include(j=>j.User).FirstOrDefaultAsync();
+                .Include(j => j.Company)
+                .Include(j => j.Qualifications)
+                .Include(j => j.User).FirstOrDefaultAsync();
         }
     }
 }

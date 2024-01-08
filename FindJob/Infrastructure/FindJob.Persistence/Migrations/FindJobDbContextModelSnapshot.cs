@@ -49,6 +49,10 @@ namespace FindJob.Persistence.Migrations
                     b.Property<Guid>("JobId")
                         .HasColumnType("uuid");
 
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<bool>("Status")
                         .HasColumnType("boolean");
 

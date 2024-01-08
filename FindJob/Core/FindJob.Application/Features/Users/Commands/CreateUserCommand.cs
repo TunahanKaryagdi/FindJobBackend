@@ -1,5 +1,4 @@
 ﻿using Core.Utilities.Results;
-using FindJob.Application.Features.Users.Dtos;
 using FindJob.Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;

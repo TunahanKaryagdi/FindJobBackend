@@ -1,7 +1,6 @@
 ﻿using FindJob.Application.Features.Company.Dtos;
 using FindJob.Application.Features.Qualification.Dtos;
 using FindJob.Application.Features.Users.Dtos;
-using FindJob.Domain.Entities;
 
 namespace FindJob.Application.Features.Jobs.Dtos
 {

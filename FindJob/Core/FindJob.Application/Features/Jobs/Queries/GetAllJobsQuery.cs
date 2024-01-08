@@ -19,29 +19,29 @@ namespace FindJob.Application.Features.Jobs.Queries
                 _jobReadRepository = jobReadRepository;
             }
 
-            public  async Task<IDataResult<List<JobDto>>> Handle(GetAllJobsQuery request, CancellationToken cancellationToken)
+            public async Task<IDataResult<List<JobDto>>> Handle(GetAllJobsQuery request, CancellationToken cancellationToken)
             {
-                List<JobDto> jobs = _jobReadRepository.GetAll().Skip((request.Page-1) * 20).Take(20)
+                List<JobDto> jobs = _jobReadRepository.GetAll().Skip((request.Page - 1) * 20).Take(20)
                     .Select(j => new JobDto()
                     {
                         Id = j.Id.ToString(),
                         CreatedDate = j.CreatedDate,
                         Location = j.Location,
-                        Company = new Company.Dtos.CompanyDto { Id = j.Company.Id.ToString(),CreatedDate = j.Company.CreatedDate,Name = j.Company.Name, UpdatedDate = j.Company.UpdatedDate },
+                        Company = new Company.Dtos.CompanyDto { Id = j.Company.Id.ToString(), CreatedDate = j.Company.CreatedDate, Name = j.Company.Name, UpdatedDate = j.Company.UpdatedDate },
                         Salary = j.Salary,
                         Type = j.Type,
                         Qualifications = j.Qualifications.Select(q => new QualificationDto { Id = q.Id.ToString(), JobId = q.JobId.ToString(), CreatedDate = q.CreatedDate, Name = q.Name, UpdatedDate = q.UpdatedDate }).ToList(),
-                        User = new Users.Dtos.UserDto { Id = j.User.Id.ToString(),Email = j.User.Email,NameSurname = j.User.NameSurname},
+                        User = new Users.Dtos.UserDto { Id = j.User.Id.ToString(), Email = j.User.Email, NameSurname = j.User.NameSurname },
                         Title = j.Title,
                         UpdatedDate = j.UpdatedDate,
                     }).ToList();
 
 
-                return new SuccessDataResult<List<JobDto>>(jobs,"successfully get data");
-                
+                return new SuccessDataResult<List<JobDto>>(jobs, "successfully get data");
+
             }
 
-           
+
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Core.Utilities.Results;
-using FindJob.Application.Features.Jobs.Commands;
-using FindJob.Application.Features.Jobs.Dtos;
+﻿using FindJob.Application.Features.Jobs.Commands;
 using FindJob.Application.Features.Jobs.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -24,9 +22,9 @@ namespace FindJob.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(CreateJobCommand createJobCommand)
         {
-            
+
             var result = await _mediator.Send(createJobCommand);
-            
+
             if (result.Success)
             {
                 return Ok(result);
@@ -49,7 +47,18 @@ namespace FindJob.API.Controllers
         [HttpGet("{Id}")]
         public async Task<IActionResult> GetById([FromRoute] GetJobByIdQuery getJobByIdQuery)
         {
-            var result  = await _mediator.Send(getJobByIdQuery);
+            var result = await _mediator.Send(getJobByIdQuery);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("User/{UserId}")]
+        public async Task<IActionResult> GetByUserId([FromRoute] GetJobsByUserIdQuery getJobsByUserIdQuery)
+        {
+            var result = await _mediator.Send(getJobsByUserIdQuery);
             if (result.Success)
             {
                 return Ok(result);

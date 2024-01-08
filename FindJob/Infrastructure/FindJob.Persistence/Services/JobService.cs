@@ -1,5 +1,4 @@
-﻿using FindJob.Application.Features.Jobs.Commands;
-using FindJob.Application.Repositories;
+﻿using FindJob.Application.Repositories;
 using FindJob.Application.Services;
 using FindJob.Domain.Entities;
 
@@ -20,7 +19,7 @@ namespace FindJob.Persistence.Services
         public async Task<Job> CreateJob(Job job)
         {
 
-            var newJob = await _jobWriteRepository.AddAsync(job); 
+            var newJob = await _jobWriteRepository.AddAsync(job);
 
             await _jobWriteRepository.SaveAsync();
 
@@ -28,7 +27,7 @@ namespace FindJob.Persistence.Services
             //_= await  _qualificationWriteRepository.AddRangeAsync(qualifications.ToList());
             //await _qualificationWriteRepository.SaveAsync();
 
-            return newJob; 
+            return newJob;
         }
     }
 }

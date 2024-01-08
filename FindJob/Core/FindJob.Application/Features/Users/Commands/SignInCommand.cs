@@ -1,6 +1,5 @@
 ﻿using Core.Utilities.Results;
 using FindJob.Application.Abstractions.Token;
-using FindJob.Application.Features.Users.Dtos;
 using FindJob.Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -39,9 +38,9 @@ namespace FindJob.Application.Features.Users.Commands
                 if (result.Succeeded)
                 {
                     var token = _tokenHelper.CreateAccessToken(user.Id.ToString());
-                    return new SuccessDataResult<string>(data: token.AccessToken,message: "successfully login");
+                    return new SuccessDataResult<string>(data: token.AccessToken, message: "successfully login");
                 }
-                
+
                 return new ErrorDataResult<string>("failed");
             }
         }

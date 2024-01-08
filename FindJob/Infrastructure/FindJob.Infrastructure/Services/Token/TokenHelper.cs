@@ -23,10 +23,10 @@ namespace FindJob.Infrastructure.Services
             SigningCredentials signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             token.ExpirationTime = DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["TokenOptions:AccessTokenExpiration"]));
             JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
-                claims : new List<Claim> 
-                { 
-                    new Claim(ClaimTypes.NameIdentifier,userId),  
-                 
+                claims: new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier,userId),
+
                 },
                 audience: _configuration["TokenOptions:Audience"],
                 issuer: _configuration["TokenOptions:Issuer"],

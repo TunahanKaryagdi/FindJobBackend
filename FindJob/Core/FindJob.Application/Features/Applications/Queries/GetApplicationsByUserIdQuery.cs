@@ -3,11 +3,6 @@ using FindJob.Application.Features.Applications.Dtos;
 using FindJob.Application.Features.Qualification.Dtos;
 using FindJob.Application.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Application.Features.Applications.Queries
 {
@@ -15,7 +10,7 @@ namespace FindJob.Application.Features.Applications.Queries
     {
         public string UserId { get; set; }
 
-        public class GetApplicationsByUserIdQueryHandler : IRequestHandler<GetApplicationsByUserIdQuery, IDataResult<List<ApplicationDto>>> 
+        public class GetApplicationsByUserIdQueryHandler : IRequestHandler<GetApplicationsByUserIdQuery, IDataResult<List<ApplicationDto>>>
         {
             IApplicationReadRepository _applicationReadRepository;
 
@@ -57,7 +52,7 @@ namespace FindJob.Application.Features.Applications.Queries
                     }
                 ).ToList();
 
-                return new SuccessDataResult<List<ApplicationDto>>(data: applications,"succesfully");
+                return new SuccessDataResult<List<ApplicationDto>>(data: applications, "succesfully");
             }
         }
 

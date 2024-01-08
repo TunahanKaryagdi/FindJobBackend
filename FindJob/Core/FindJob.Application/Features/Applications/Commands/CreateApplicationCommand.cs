@@ -1,11 +1,6 @@
 ﻿using Core.Utilities.Results;
 using FindJob.Application.Repositories.Application;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Application.Features.Applications.Commands
 {
@@ -13,6 +8,7 @@ namespace FindJob.Application.Features.Applications.Commands
     {
         public string JobId { get; set; }
         public string UserId { get; set; }
+        public string Message { get; set; }
 
         public class CreateApplicationCommandHandler : IRequestHandler<CreateApplicationCommand, IResult>
         {
@@ -30,10 +26,11 @@ namespace FindJob.Application.Features.Applications.Commands
                 {
                     UserId = Guid.Parse(request.UserId),
                     JobId = Guid.Parse(request.JobId),
-                    Status = false
+                    Status = false,
+                    Message = request.Message
                 });
                 await _applicationWriteRepository.SaveAsync();
-                return new SuccessResult ("successfully added");
+                return new SuccessResult("successfully added");
             }
         }
 

@@ -1,9 +1,4 @@
-﻿
-
-
-using FindJob.Application.Repositories;
-using FindJob.Application.Repositories.Application;
-using FindJob.Domain.Entities;
+﻿using FindJob.Application.Repositories.Application;
 using FindJob.Persistence.Contexts;
 
 namespace FindJob.Persistence.Repositories

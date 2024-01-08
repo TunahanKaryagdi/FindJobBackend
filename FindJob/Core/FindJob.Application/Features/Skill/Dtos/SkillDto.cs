@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FindJob.Application.Features.Skill.Dtos
+﻿namespace FindJob.Application.Features.Skill.Dtos
 {
     public class SkillDto
     {

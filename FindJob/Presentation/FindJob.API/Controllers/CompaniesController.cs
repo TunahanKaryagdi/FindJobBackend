@@ -1,7 +1,5 @@
 ﻿using FindJob.Application.Features.Company.Commands;
-using FindJob.Application.Features.Jobs.Commands;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FindJob.API.Controllers

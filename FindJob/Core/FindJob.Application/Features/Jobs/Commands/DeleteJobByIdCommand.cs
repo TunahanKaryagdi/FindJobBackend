@@ -1,5 +1,4 @@
 ﻿using Core.Utilities.Results;
-using FindJob.Application.Features.Jobs.Dtos;
 using FindJob.Application.Repositories;
 using MediatR;
 
