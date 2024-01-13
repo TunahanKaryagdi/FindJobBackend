@@ -31,7 +31,7 @@ namespace FindJob.Application.Features.Jobs.Queries
                          Company = new Company.Dtos.CompanyDto { Id = j.Company.Id.ToString(), CreatedDate = j.Company.CreatedDate, Name = j.Company.Name, UpdatedDate = j.Company.UpdatedDate },
                          Salary = j.Salary,
                          Type = j.Type,
-                         Qualifications = j.Qualifications.Select(q => new QualificationDto { Id = q.Id.ToString(), JobId = q.JobId.ToString(), CreatedDate = q.CreatedDate, Name = q.Name, UpdatedDate = q.UpdatedDate }).ToList(),
+                         Qualifications = j.Qualifications.Select(q => new QualificationDto { Id = q.Id.ToString(), JobId = q.JobId.ToString(), CreatedDate = q.CreatedDate, Name = q.Name, UpdatedDate = q.UpdatedDate, Experience = q.Experience }).ToList(),
                          User = new Users.Dtos.UserDto { Id = j.User.Id.ToString(), Email = j.User.Email, NameSurname = j.User.NameSurname },
                          Title = j.Title,
                          UpdatedDate = j.UpdatedDate,

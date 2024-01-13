@@ -239,6 +239,9 @@ namespace FindJob.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("Experience")
+                        .HasColumnType("integer");
+
                     b.Property<Guid>("JobId")
                         .HasColumnType("uuid");
 
@@ -285,6 +288,9 @@ namespace FindJob.Persistence.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Experience")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .IsRequired()

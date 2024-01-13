@@ -27,7 +27,7 @@ namespace FindJob.Persistence.Services
             {
                 throw new Exception("user not found");
             }
-            List<SkillDto> skillDtos = _skillReadRepository.GetWhere(x => x.UserId == Guid.Parse(id)).Select(x => new SkillDto { Id = x.Id.ToString(), CreatedDate = x.CreatedDate, UpdatedDate = x.UpdatedDate, Name = x.Name, UserId = x.UserId.ToString() }).ToList();
+            List<SkillDto> skillDtos = _skillReadRepository.GetWhere(x => x.UserId == Guid.Parse(id)).Select(x => new SkillDto { Id = x.Id.ToString(), CreatedDate = x.CreatedDate, UpdatedDate = x.UpdatedDate, Name = x.Name, UserId = x.UserId.ToString(), Experience = x.Experience }).ToList();
             UserDetailDto userDetailDto = new UserDetailDto
             {
                 Email = user.Email,
