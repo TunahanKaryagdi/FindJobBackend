@@ -1,5 +1,5 @@
-﻿using Core.Utilities.Results;
-using FindJob.Application.Abstractions.Token;
+﻿using FindJob.Application.Abstractions.Token;
+using FindJob.Application.Utilities.Results;
 using FindJob.Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;

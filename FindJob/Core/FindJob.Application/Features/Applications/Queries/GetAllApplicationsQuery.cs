@@ -1,7 +1,7 @@
-﻿using Core.Utilities.Results;
-using FindJob.Application.Features.Applications.Dtos;
+﻿using FindJob.Application.Features.Applications.Dtos;
 using FindJob.Application.Features.Qualification.Dtos;
 using FindJob.Application.Repositories;
+using FindJob.Application.Utilities.Results;
 using MediatR;
 
 namespace FindJob.Application.Features.Applications.Queries
@@ -38,8 +38,8 @@ namespace FindJob.Application.Features.Applications.Queries
                             Title = a.Job.Title,
                             Type = a.Job.Type,
                             Qualifications = a.Job.Qualifications.Select(q => new QualificationDto { Id = q.Id.ToString(), CreatedDate = q.CreatedDate, JobId = q.JobId.ToString(), Name = q.Name, UpdatedDate = q.UpdatedDate }).ToList(),
-                            Company = new Company.Dtos.CompanyDto { Id = a.Job.Company.Id.ToString(), Name = a.Job.Company.Name, UpdatedDate = a.Job.Company.UpdatedDate, CreatedDate = a.Job.Company.CreatedDate },
-                            User = new Users.Dtos.UserDto { Id = a.Job.User.Id.ToString(), Email = a.Job.User.Email, NameSurname = a.Job.User.NameSurname }
+                            Company = new Company.Dtos.CompanyDto { Id = a.Job.Company.Id.ToString(), Name = a.Job.Company.Name, UpdatedDate = a.Job.Company.UpdatedDate, CreatedDate = a.Job.Company.CreatedDate, Image = a.Job.Company.Image },
+                            User = new Users.Dtos.UserDto { Id = a.Job.User.Id.ToString(), Email = a.Job.User.Email, NameSurname = a.Job.User.NameSurname, Image = a.Job.User.Image }
                         },
                         User = new Users.Dtos.UserDto
                         {
@@ -47,7 +47,8 @@ namespace FindJob.Application.Features.Applications.Queries
                             NameSurname = a.User.NameSurname,
                             Email = a.User.Email
                         },
-                        Status = a.Status
+                        Status = a.Status,
+                        Message = a.Message
                     }
                 ).ToList();
 

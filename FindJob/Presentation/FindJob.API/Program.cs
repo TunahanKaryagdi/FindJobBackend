@@ -51,4 +51,5 @@ app.UseAuthentication();
 
 app.MapControllers();
 
+app.UseStaticFiles();
 app.Run();

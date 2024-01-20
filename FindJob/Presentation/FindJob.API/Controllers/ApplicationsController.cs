@@ -40,6 +40,18 @@ namespace FindJob.API.Controllers
             return BadRequest(result);
         }
 
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateApplicationByIdCommand updateApplicationByIdCommand)
+        {
+            var result = await _mediator.Send(updateApplicationByIdCommand);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("User/{UserId}")]
         public async Task<IActionResult> GetByUserId([FromRoute] GetApplicationsByUserIdQuery getApplicationsByUserIdQuery)
         {

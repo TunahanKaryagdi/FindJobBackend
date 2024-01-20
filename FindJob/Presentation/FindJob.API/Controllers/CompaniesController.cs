@@ -1,6 +1,7 @@
 ﻿using FindJob.Application.Features.Company.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace FindJob.API.Controllers
 {
@@ -18,10 +19,15 @@ namespace FindJob.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(CreateCompanyCommand createCompanyCommand)
+        public async Task<IActionResult> Add([FromForm] string jsonBody, [FromForm] IFormFile? file)
         {
+            CreateCompanyCommand command = new CreateCompanyCommand();
+            var body = JsonConvert.DeserializeObject<CreateCompanyCommand>(jsonBody);
+            command.File = file;
+            command.Name = body.Name;
 
-            var result = await _mediator.Send(createCompanyCommand);
+            var result = await _mediator.Send(command);
+
             if (result.Success)
             {
                 return Ok(result);

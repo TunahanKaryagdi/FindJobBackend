@@ -1,6 +1,6 @@
-﻿using Core.Utilities.Results;
-using FindJob.Application.Features.Jobs.Dtos;
+﻿using FindJob.Application.Features.Jobs.Dtos;
 using FindJob.Application.Services;
+using FindJob.Application.Utilities.Results;
 using FindJob.Domain.Entities;
 using MediatR;
 
@@ -36,7 +36,7 @@ namespace FindJob.Application.Features.Jobs.Commands
                     Location = request.Location,
                     Salary = request.Salary,
                     Type = request.Type,
-                    Qualifications = request.Qualifications.Select(q => new Domain.Entities.Qualification { Name = q.Name, Experience = q.Experience}).ToList(),
+                    Qualifications = request.Qualifications.Select(q => new Domain.Entities.Qualification { Name = q.Name, Experience = q.Experience }).ToList(),
                     CompanyId = Guid.Parse(request.CompanyId),
                     UserId = Guid.Parse(request.UserId),
                 });

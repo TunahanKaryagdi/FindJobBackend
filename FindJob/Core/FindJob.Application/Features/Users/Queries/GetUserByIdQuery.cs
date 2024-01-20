@@ -1,6 +1,6 @@
-﻿using Core.Utilities.Results;
-using FindJob.Application.Features.Users.Dtos;
+﻿using FindJob.Application.Features.Users.Dtos;
 using FindJob.Application.Services;
+using FindJob.Application.Utilities.Results;
 using MediatR;
 
 namespace FindJob.Application.Features.Users.Queries

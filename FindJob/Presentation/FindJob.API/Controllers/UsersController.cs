@@ -3,6 +3,7 @@ using FindJob.Application.Features.Users.Dtos;
 using FindJob.Application.Features.Users.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace FindJob.API.Controllers
 {
@@ -23,6 +24,25 @@ namespace FindJob.API.Controllers
         {
 
             var result = await _mediator.Send(createUserCommand);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromForm] string jsonBody, [FromForm] IFormFile? file)
+        {
+            UpdateUserCommand updateUserCommand = new UpdateUserCommand();
+            var body = JsonConvert.DeserializeObject<UpdateUserCommand>(jsonBody);
+            updateUserCommand.Id = body.Id;
+            updateUserCommand.NameSurname = body.NameSurname;
+            updateUserCommand.Email = body.Email;
+            updateUserCommand.File = file;
+            var result = await _mediator.Send(updateUserCommand);
             if (result.Success)
             {
                 return Ok(result);

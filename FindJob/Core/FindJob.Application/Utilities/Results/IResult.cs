@@ -1,4 +1,4 @@
-﻿namespace Core.Utilities.Results
+﻿namespace FindJob.Application.Utilities.Results
 {
     public interface IResult
     {

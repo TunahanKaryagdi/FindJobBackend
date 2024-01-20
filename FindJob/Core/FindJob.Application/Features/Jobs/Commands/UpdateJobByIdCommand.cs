@@ -1,5 +1,5 @@
-﻿using Core.Utilities.Results;
-using FindJob.Application.Repositories;
+﻿using FindJob.Application.Repositories;
+using FindJob.Application.Utilities.Results;
 using FindJob.Domain.Entities;
 using MediatR;
 

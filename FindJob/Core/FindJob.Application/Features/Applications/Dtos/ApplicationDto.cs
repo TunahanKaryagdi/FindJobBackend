@@ -11,5 +11,6 @@ namespace FindJob.Application.Features.Applications.Dtos
         public JobDto Job { get; set; }
         public UserDto User { get; set; }
         public bool Status { get; set; }
+        public string Message { get; set; }
     }
 }

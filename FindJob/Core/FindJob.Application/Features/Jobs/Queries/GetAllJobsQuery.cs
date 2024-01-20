@@ -1,7 +1,7 @@
-﻿using Core.Utilities.Results;
-using FindJob.Application.Features.Jobs.Dtos;
+﻿using FindJob.Application.Features.Jobs.Dtos;
 using FindJob.Application.Features.Qualification.Dtos;
 using FindJob.Application.Repositories;
+using FindJob.Application.Utilities.Results;
 using MediatR;
 
 namespace FindJob.Application.Features.Jobs.Queries
@@ -27,11 +27,11 @@ namespace FindJob.Application.Features.Jobs.Queries
                         Id = j.Id.ToString(),
                         CreatedDate = j.CreatedDate,
                         Location = j.Location,
-                        Company = new Company.Dtos.CompanyDto { Id = j.Company.Id.ToString(), CreatedDate = j.Company.CreatedDate, Name = j.Company.Name, UpdatedDate = j.Company.UpdatedDate },
+                        Company = new Company.Dtos.CompanyDto { Id = j.Company.Id.ToString(), CreatedDate = j.Company.CreatedDate, Name = j.Company.Name, UpdatedDate = j.Company.UpdatedDate, Image = j.Company.Image },
                         Salary = j.Salary,
                         Type = j.Type,
-                        Qualifications = j.Qualifications.Select(q => new QualificationDto { Id = q.Id.ToString(), JobId = q.JobId.ToString(), CreatedDate = q.CreatedDate, Name = q.Name, UpdatedDate = q.UpdatedDate , Experience = q.Experience}).ToList(),
-                        User = new Users.Dtos.UserDto { Id = j.User.Id.ToString(), Email = j.User.Email, NameSurname = j.User.NameSurname },
+                        Qualifications = j.Qualifications.Select(q => new QualificationDto { Id = q.Id.ToString(), JobId = q.JobId.ToString(), CreatedDate = q.CreatedDate, Name = q.Name, UpdatedDate = q.UpdatedDate, Experience = q.Experience }).ToList(),
+                        User = new Users.Dtos.UserDto { Id = j.User.Id.ToString(), Email = j.User.Email, NameSurname = j.User.NameSurname, Image = j.User.Image },
                         Title = j.Title,
                         UpdatedDate = j.UpdatedDate,
                     }).ToList();

@@ -33,7 +33,8 @@ namespace FindJob.Persistence.Services
                 Email = user.Email,
                 Id = user.Id.ToString(),
                 NameSurname = user.NameSurname,
-                Skills = skillDtos
+                Skills = skillDtos,
+                Image = user.Image
             };
             return userDetailDto;
         }
