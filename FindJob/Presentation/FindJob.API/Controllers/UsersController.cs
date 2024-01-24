@@ -31,7 +31,17 @@ namespace FindJob.API.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll([FromQuery] GetAllUsersQuery getAllUsersQuery)
+        {
 
+            var result = await _mediator.Send(getAllUsersQuery);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
         [HttpPut]
         public async Task<IActionResult> Update([FromForm] string jsonBody, [FromForm] IFormFile? file)
@@ -54,6 +64,17 @@ namespace FindJob.API.Controllers
         public async Task<IActionResult> GetById([FromRoute] GetUserByIdQuery getUserByIdQuery)
         {
             var result = await _mediator.Send(getUserByIdQuery);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> Delete([FromRoute] DeleteUserByIdCommand deleteUserByIdCommand)
+        {
+            var result = await _mediator.Send(deleteUserByIdCommand);
             if (result.Success)
             {
                 return Ok(result);

@@ -18,7 +18,20 @@ namespace FindJob.Persistence.Services
             _userManager = userManager;
         }
 
+        public List<UserDetailDto> GetAllUsers()
+        {
+            List<UserDetailDto> users = _userManager.Users
+                .Select(u => new UserDetailDto()
+                {
+                    Email = u.Email,
+                    Id = u.Id.ToString(),
+                    Image = u.Image,
+                    NameSurname = u.NameSurname,
+                    Skills = u.Skills.Select(s => new SkillDto { Id = s.Id.ToString(), CreatedDate = s.CreatedDate, Experience = s.Experience, Name = s.Name, UpdatedDate = s.UpdatedDate, UserId = s.UserId.ToString() }).ToList()
 
+                }).ToList();
+            return users;
+        }
 
         public async Task<UserDetailDto> GetUserById(string id)
         {

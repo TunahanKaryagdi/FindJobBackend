@@ -5,5 +5,6 @@ namespace FindJob.Application.Services
     public interface IUserService
     {
         Task<UserDetailDto> GetUserById(string id);
+        List<UserDetailDto> GetAllUsers();
     }
 }
