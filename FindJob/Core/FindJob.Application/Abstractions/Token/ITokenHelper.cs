@@ -2,7 +2,7 @@
 {
     public interface ITokenHelper
     {
-        Token CreateAccessToken(string userId);
+        string CreateAccessToken(string userId,List<String> roles);
 
     }
 }

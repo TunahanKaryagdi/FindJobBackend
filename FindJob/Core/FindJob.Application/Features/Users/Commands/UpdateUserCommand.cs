@@ -1,4 +1,5 @@
-﻿using FindJob.Application.Utilities.File;
+﻿using FindJob.Application.Utilities.Enums;
+using FindJob.Application.Utilities.File;
 using FindJob.Application.Utilities.Results;
 using FindJob.Domain.Entities.Identity;
 using MediatR;

@@ -62,7 +62,8 @@ namespace FindJob.Application.Features.Users.Commands
                 else
                     throw new Exception("Invalid external authentication");
 
-                Token token = _tokenHelper.CreateAccessToken(user.Id.ToString());
+                var roles = await _userManager.GetRolesAsync(user);
+                string token = _tokenHelper.CreateAccessToken(user.Id.ToString(),roles.ToList());
 
                 return new SuccessSignInWithGoogleDto()
                 {

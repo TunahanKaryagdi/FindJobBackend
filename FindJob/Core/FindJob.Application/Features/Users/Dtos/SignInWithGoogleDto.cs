@@ -10,7 +10,7 @@ namespace FindJob.Application.Features.Users.Dtos
     }
     public class SuccessSignInWithGoogleDto : SignInWithGoogleDto
     {
-        public Token Token { get; set; }
+        public string Token { get; set; }
     }
 
     public class ErrorSignInWithGoogleDto : SignInWithGoogleDto

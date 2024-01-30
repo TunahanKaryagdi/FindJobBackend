@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FindJob.Application.Utilities.Enums;
+using Microsoft.AspNetCore.Http;
 
 namespace FindJob.Application.Utilities.File
 {

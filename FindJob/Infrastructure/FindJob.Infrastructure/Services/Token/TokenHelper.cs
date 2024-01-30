@@ -16,28 +16,31 @@ namespace FindJob.Infrastructure.Services
             _configuration = configuration;
         }
 
-        public Token CreateAccessToken(string userId)
+        public string CreateAccessToken(string userId, List<string> roles)
         {
-            Token token = new Token();
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, userId)
+            };
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
             SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["TokenOptions:SecurityKey"]));
             SigningCredentials signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            token.ExpirationTime = DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["TokenOptions:AccessTokenExpiration"]));
             JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
-                claims: new List<Claim>
-                {
-                    new Claim(ClaimTypes.NameIdentifier,userId),
-
-                },
+                claims: claims,
                 audience: _configuration["TokenOptions:Audience"],
                 issuer: _configuration["TokenOptions:Issuer"],
-                expires: token.ExpirationTime,
+                expires: DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["TokenOptions:AccessTokenExpiration"])),
                 notBefore: DateTime.Now,
                 signingCredentials: signingCredentials
             );
 
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
-            token.AccessToken = handler.WriteToken(jwtSecurityToken);
-            return token;
+            string accessToken = handler.WriteToken(jwtSecurityToken);
+            return accessToken;
         }
     }
 }

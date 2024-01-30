@@ -1,6 +1,8 @@
 ﻿using FindJob.Application.Features.Jobs.Commands;
 using FindJob.Application.Features.Jobs.Queries;
+using FindJob.Application.Utilities.Enums;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FindJob.API.Controllers
@@ -34,6 +36,7 @@ namespace FindJob.API.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "USER")]
         public async Task<IActionResult> GetAll([FromQuery] GetAllJobsQuery getAllJobsQuery)
         {
             var result = await _mediator.Send(getAllJobsQuery);

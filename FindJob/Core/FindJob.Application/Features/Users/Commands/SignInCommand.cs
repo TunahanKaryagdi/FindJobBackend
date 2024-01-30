@@ -35,10 +35,12 @@ namespace FindJob.Application.Features.Users.Commands
                     throw new Exception("cannot find user");
                 }
                 SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
+
                 if (result.Succeeded)
                 {
-                    var token = _tokenHelper.CreateAccessToken(user.Id.ToString());
-                    return new SuccessDataResult<string>(data: token.AccessToken, message: "successfully login");
+                    var roles = await _userManager.GetRolesAsync(user);
+                    var token = _tokenHelper.CreateAccessToken(user.Id.ToString(),roles.ToList());
+                    return new SuccessDataResult<string>(data: token, message: "successfully login");
                 }
 
                 return new ErrorDataResult<string>("failed");

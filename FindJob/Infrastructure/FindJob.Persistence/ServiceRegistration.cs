@@ -7,6 +7,7 @@ using FindJob.Persistence.Contexts;
 using FindJob.Persistence.Repositories;
 using FindJob.Persistence.Repositories.Skill;
 using FindJob.Persistence.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,11 +22,14 @@ namespace FindJob.Persistence
             options.UseNpgsql(Configuration.ConnectionString));
             services.AddIdentity<AppUser, AppRole>(options =>
             {
+
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireDigit = false;
-            }).AddEntityFrameworkStores<FindJobDbContext>();
+            })
+                .AddEntityFrameworkStores<FindJobDbContext>();
+
             services.AddScoped<IJobReadRepository, JobReadRepository>();
             services.AddScoped<IJobWriteRepository, JobWriteRepository>();
             services.AddScoped<IJobService, JobService>();
