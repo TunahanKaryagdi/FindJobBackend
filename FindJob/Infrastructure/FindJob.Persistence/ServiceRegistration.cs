@@ -6,6 +6,7 @@ using FindJob.Domain.Entities.Identity;
 using FindJob.Persistence.Contexts;
 using FindJob.Persistence.Repositories;
 using FindJob.Persistence.Repositories.Skill;
+using FindJob.Persistence.Repositories.WorkingUser;
 using FindJob.Persistence.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,8 @@ namespace FindJob.Persistence
             services.AddScoped<IApplicationWriteRepository, ApplicationWriteRepository>();
             services.AddScoped<ISkillReadRepository, SkillReadRepository>();
             services.AddScoped<ISkillWriteRepository, SkillWriteRepository>();
+            services.AddScoped<IWorkingUserReadRepository, WorkingUserReadRepository>();
+            services.AddScoped<IWorkingUserWriteRepository, WorkingUserWriteRepository>();
 
         }
 

@@ -36,7 +36,7 @@ namespace FindJob.API.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "USER")]
+        [Authorize(Roles = "USER, EMPLOYER")]
         public async Task<IActionResult> GetAll([FromQuery] GetAllJobsQuery getAllJobsQuery)
         {
             var result = await _mediator.Send(getAllJobsQuery);

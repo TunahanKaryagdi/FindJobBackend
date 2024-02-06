@@ -1,6 +1,8 @@
 ﻿using FindJob.Application.Features.Users.Commands;
 using FindJob.Application.Features.Users.Dtos;
 using FindJob.Application.Features.Users.Queries;
+using FindJob.Application.Features.WorkingUser.Commands;
+using FindJob.Application.Features.WorkingUser.Queries;
 using FindJob.Application.Utilities.Enums;
 using FindJob.Domain.Entities.Identity;
 using MediatR;
@@ -77,6 +79,30 @@ namespace FindJob.API.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpGet("Companies/{UserId}")]
+        public async Task<IActionResult> GetCompaniesById([FromRoute] GetCompaniesByUserIdQuery getCompaniesByUserIdQuery)
+        {
+            var result = await _mediator.Send(getCompaniesByUserIdQuery);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("Companies")]
+        public async Task<IActionResult> CreateWorkingUser(CreateWorkingUserCommand createWorkingUserCommand)
+        {
+
+            var result = await _mediator.Send(createWorkingUserCommand);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
 
         [HttpDelete("{Id}")]
         public async Task<IActionResult> Delete([FromRoute] DeleteUserByIdCommand deleteUserByIdCommand)
