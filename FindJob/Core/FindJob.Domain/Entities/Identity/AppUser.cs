@@ -7,8 +7,8 @@ namespace FindJob.Domain.Entities.Identity
         public string NameSurname { get; set; }
         public ICollection<Role> roles { get; set; }
         public string? Image { get; set; }
-
         public ICollection<Skill> Skills { get; set; }
+        public ICollection<CompanyStaff> Staffs { get; set; }
 
     }
 

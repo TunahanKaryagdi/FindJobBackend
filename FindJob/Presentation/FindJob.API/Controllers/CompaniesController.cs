@@ -1,4 +1,7 @@
 ﻿using FindJob.Application.Features.Company.Commands;
+using FindJob.Application.Features.CompanyStaff.Queries;
+using FindJob.Application.Features.Users.Queries;
+using FindJob.Application.Features.WorkingUser.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -28,6 +31,18 @@ namespace FindJob.API.Controllers
 
             var result = await _mediator.Send(command);
 
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+        [HttpGet("{CompanyId}/WorkingUsers")]
+        public async Task<IActionResult> GetUsersByCompanyId([FromRoute] GetUsersByCompanyIdQuery getUsersByCompanyIdQuery)
+        {
+            var result = await _mediator.Send(getUsersByCompanyIdQuery);
             if (result.Success)
             {
                 return Ok(result);

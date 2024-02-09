@@ -95,6 +95,37 @@ namespace FindJob.Persistence.Migrations
                     b.ToTable("Companies");
                 });
 
+            modelBuilder.Entity("FindJob.Domain.Entities.CompanyStaff", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CompanyStaffs");
+                });
+
             modelBuilder.Entity("FindJob.Domain.Entities.Identity.AppRole", b =>
                 {
                     b.Property<Guid>("Id")
@@ -315,37 +346,6 @@ namespace FindJob.Persistence.Migrations
                     b.ToTable("Skill");
                 });
 
-            modelBuilder.Entity("FindJob.Domain.Entities.WorkingUser", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("CompanyId")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("WorkingUsers");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
@@ -483,6 +483,25 @@ namespace FindJob.Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("FindJob.Domain.Entities.CompanyStaff", b =>
+                {
+                    b.HasOne("FindJob.Domain.Entities.Company", "Company")
+                        .WithMany("Staffs")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FindJob.Domain.Entities.Identity.AppUser", "User")
+                        .WithMany("Staffs")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("FindJob.Domain.Entities.Job", b =>
                 {
                     b.HasOne("FindJob.Domain.Entities.Company", "Company")
@@ -520,25 +539,6 @@ namespace FindJob.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("FindJob.Domain.Entities.WorkingUser", b =>
-                {
-                    b.HasOne("FindJob.Domain.Entities.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FindJob.Domain.Entities.Identity.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Company");
 
                     b.Navigation("User");
                 });
@@ -597,11 +597,15 @@ namespace FindJob.Persistence.Migrations
             modelBuilder.Entity("FindJob.Domain.Entities.Company", b =>
                 {
                     b.Navigation("Jobs");
+
+                    b.Navigation("Staffs");
                 });
 
             modelBuilder.Entity("FindJob.Domain.Entities.Identity.AppUser", b =>
                 {
                     b.Navigation("Skills");
+
+                    b.Navigation("Staffs");
                 });
 
             modelBuilder.Entity("FindJob.Domain.Entities.Job", b =>

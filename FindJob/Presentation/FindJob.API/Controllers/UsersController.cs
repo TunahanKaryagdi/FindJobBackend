@@ -1,4 +1,5 @@
-﻿using FindJob.Application.Features.Users.Commands;
+﻿using FindJob.Application.Features.CompanyStaff.Queries;
+using FindJob.Application.Features.Users.Commands;
 using FindJob.Application.Features.Users.Dtos;
 using FindJob.Application.Features.Users.Queries;
 using FindJob.Application.Features.WorkingUser.Commands;
@@ -80,8 +81,8 @@ namespace FindJob.API.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("Companies/{UserId}")]
-        public async Task<IActionResult> GetCompaniesById([FromRoute] GetCompaniesByUserIdQuery getCompaniesByUserIdQuery)
+        [HttpGet("{UserId}/Companies")]
+        public async Task<IActionResult> GetUsersByCompanyId([FromRoute] GetCompaniesByUserIdQuery getCompaniesByUserIdQuery)
         {
             var result = await _mediator.Send(getCompaniesByUserIdQuery);
             if (result.Success)
@@ -92,7 +93,7 @@ namespace FindJob.API.Controllers
         }
 
         [HttpPost("Companies")]
-        public async Task<IActionResult> CreateWorkingUser(CreateWorkingUserCommand createWorkingUserCommand)
+        public async Task<IActionResult> CreateWorkingUser(CreateCompanyStaffCommand createWorkingUserCommand)
         {
 
             var result = await _mediator.Send(createWorkingUserCommand);

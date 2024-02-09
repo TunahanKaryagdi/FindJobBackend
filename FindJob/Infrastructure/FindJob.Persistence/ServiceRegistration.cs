@@ -43,8 +43,8 @@ namespace FindJob.Persistence
             services.AddScoped<IApplicationWriteRepository, ApplicationWriteRepository>();
             services.AddScoped<ISkillReadRepository, SkillReadRepository>();
             services.AddScoped<ISkillWriteRepository, SkillWriteRepository>();
-            services.AddScoped<IWorkingUserReadRepository, WorkingUserReadRepository>();
-            services.AddScoped<IWorkingUserWriteRepository, WorkingUserWriteRepository>();
+            services.AddScoped<ICompanyStaffReadRepository, CompanyStaffReadRepository>();
+            services.AddScoped<ICompanyStaffWriteRepository, CompanyStaffWriteRepository>();
 
         }
 
