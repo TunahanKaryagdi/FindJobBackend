@@ -2,11 +2,6 @@
 using FindJob.Application.Services;
 using FindJob.Application.Utilities.Results;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Application.Features.Users.Queries
 {
@@ -23,8 +18,8 @@ namespace FindJob.Application.Features.Users.Queries
             }
             public async Task<IDataResult<List<UserDetailDto>>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
             {
-                var users =  _userService.GetAllUsers();
-                return new SuccessDataResult<List<UserDetailDto>>(users,"");
+                var users = _userService.GetAllUsers();
+                return new SuccessDataResult<List<UserDetailDto>>(users, "");
             }
         }
 

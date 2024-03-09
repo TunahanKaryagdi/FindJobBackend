@@ -1,6 +1,5 @@
 ﻿using FindJob.Application.Features.Jobs.Commands;
 using FindJob.Application.Features.Jobs.Queries;
-using FindJob.Application.Utilities.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

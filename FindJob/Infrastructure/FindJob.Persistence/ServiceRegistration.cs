@@ -8,7 +8,6 @@ using FindJob.Persistence.Repositories;
 using FindJob.Persistence.Repositories.Skill;
 using FindJob.Persistence.Repositories.WorkingUser;
 using FindJob.Persistence.Services;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 

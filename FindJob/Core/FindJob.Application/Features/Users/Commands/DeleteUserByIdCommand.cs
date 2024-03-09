@@ -2,17 +2,12 @@
 using FindJob.Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FindJob.Application.Features.Users.Commands
 {
-    public class DeleteUserByIdCommand : IRequest<IResult> 
+    public class DeleteUserByIdCommand : IRequest<IResult>
     {
-        public string Id{ get; set; }
+        public string Id { get; set; }
 
         public class DeleteUserByIdCommandHandler : IRequestHandler<DeleteUserByIdCommand, IResult>
         {
@@ -28,7 +23,7 @@ namespace FindJob.Application.Features.Users.Commands
                 AppUser user = await _userManager.FindByIdAsync(request.Id);
                 if (user != null)
                 {
-                   IdentityResult result =  await _userManager.DeleteAsync(user);
+                    IdentityResult result = await _userManager.DeleteAsync(user);
                     if (result.Succeeded)
                     {
                         return new SuccessResult("successfully deleted");

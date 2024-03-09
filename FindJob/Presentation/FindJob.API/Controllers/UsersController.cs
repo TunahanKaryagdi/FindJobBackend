@@ -1,5 +1,4 @@
-﻿using FindJob.Application.Features.CompanyStaff.Queries;
-using FindJob.Application.Features.Users.Commands;
+﻿using FindJob.Application.Features.Users.Commands;
 using FindJob.Application.Features.Users.Dtos;
 using FindJob.Application.Features.Users.Queries;
 using FindJob.Application.Features.WorkingUser.Commands;
@@ -82,7 +81,7 @@ namespace FindJob.API.Controllers
         }
 
         [HttpGet("{UserId}/Companies")]
-        public async Task<IActionResult> GetUsersByCompanyId([FromRoute] GetCompaniesByUserIdQuery getCompaniesByUserIdQuery)
+        public async Task<IActionResult> GetCompaniesById([FromRoute] GetCompanyStaffsByUserIdQuery getCompaniesByUserIdQuery)
         {
             var result = await _mediator.Send(getCompaniesByUserIdQuery);
             if (result.Success)
@@ -97,6 +96,17 @@ namespace FindJob.API.Controllers
         {
 
             var result = await _mediator.Send(createWorkingUserCommand);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("{UserId}/CurrentCompany")]
+        public async Task<IActionResult> GetCurrentCompanyUserId([FromRoute] GetCurrentCompanyQuery getCurrentCompanyQuery)
+        {
+            var result = await _mediator.Send(getCurrentCompanyQuery);
             if (result.Success)
             {
                 return Ok(result);
@@ -147,7 +157,7 @@ namespace FindJob.API.Controllers
                 return Ok("roles already exists");
             }
 
-            await _roleManager.CreateAsync(new AppRole { Name = AuthRole.USER.ToString()});
+            await _roleManager.CreateAsync(new AppRole { Name = AuthRole.USER.ToString() });
             await _roleManager.CreateAsync(new AppRole { Name = AuthRole.EMPLOYER.ToString() });
             await _roleManager.CreateAsync(new AppRole { Name = AuthRole.ADMIN.ToString() });
             return Ok("successfully created");

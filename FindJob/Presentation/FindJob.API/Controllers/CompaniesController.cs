@@ -1,7 +1,6 @@
-﻿using FindJob.Application.Features.Company.Commands;
+﻿using FindJob.Application.Features.Companies.Queries;
+using FindJob.Application.Features.Company.Commands;
 using FindJob.Application.Features.CompanyStaff.Queries;
-using FindJob.Application.Features.Users.Queries;
-using FindJob.Application.Features.WorkingUser.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -20,6 +19,20 @@ namespace FindJob.API.Controllers
         {
             _mediator = mediator;
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll([FromRoute] GetAllCompaniesQuery getAllCompaniesQuery)
+        {
+            var result = await _mediator.Send(getAllCompaniesQuery);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
 
         [HttpPost]
         public async Task<IActionResult> Add([FromForm] string jsonBody, [FromForm] IFormFile? file)
@@ -40,9 +53,9 @@ namespace FindJob.API.Controllers
 
 
         [HttpGet("{CompanyId}/WorkingUsers")]
-        public async Task<IActionResult> GetUsersByCompanyId([FromRoute] GetUsersByCompanyIdQuery getUsersByCompanyIdQuery)
+        public async Task<IActionResult> GetUsersByCompanyId([FromRoute] GetCompanyStaffsByCompanyIdQuery getCompanyStaffsByCompanyIdQuery)
         {
-            var result = await _mediator.Send(getUsersByCompanyIdQuery);
+            var result = await _mediator.Send(getCompanyStaffsByCompanyIdQuery);
             if (result.Success)
             {
                 return Ok(result);

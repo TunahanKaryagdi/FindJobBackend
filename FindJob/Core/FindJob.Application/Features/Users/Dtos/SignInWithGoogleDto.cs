@@ -1,6 +1,4 @@
-﻿using FindJob.Application.Abstractions.Token;
-
-namespace FindJob.Application.Features.Users.Dtos
+﻿namespace FindJob.Application.Features.Users.Dtos
 {
     public class SignInWithGoogleDto
     {

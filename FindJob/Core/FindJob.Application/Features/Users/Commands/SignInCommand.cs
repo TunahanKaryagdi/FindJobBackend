@@ -39,7 +39,7 @@ namespace FindJob.Application.Features.Users.Commands
                 if (result.Succeeded)
                 {
                     var roles = await _userManager.GetRolesAsync(user);
-                    var token = _tokenHelper.CreateAccessToken(user.Id.ToString(),roles.ToList());
+                    var token = _tokenHelper.CreateAccessToken(user.Id.ToString(), roles.ToList());
                     return new SuccessDataResult<string>(data: token, message: "successfully login");
                 }
 
