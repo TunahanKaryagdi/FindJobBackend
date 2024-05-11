@@ -1,12 +1,12 @@
 ﻿
 using FindJob.Application.Repositories;
 using FindJob.Application.Repositories.Application;
+using FindJob.Application.Repositories.PreferredLocation;
 using FindJob.Application.Services;
 using FindJob.Domain.Entities.Identity;
 using FindJob.Persistence.Contexts;
 using FindJob.Persistence.Repositories;
 using FindJob.Persistence.Repositories.Skill;
-using FindJob.Persistence.Repositories.WorkingUser;
 using FindJob.Persistence.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -44,6 +44,8 @@ namespace FindJob.Persistence
             services.AddScoped<ISkillWriteRepository, SkillWriteRepository>();
             services.AddScoped<ICompanyStaffReadRepository, CompanyStaffReadRepository>();
             services.AddScoped<ICompanyStaffWriteRepository, CompanyStaffWriteRepository>();
+            services.AddScoped<IPreferredLocationWriteRepository, PreferredLocationWriteRepository>();
+            services.AddScoped<IPreferredLocationReadRepository, PreferredLocationReadRepository>();
 
         }
 

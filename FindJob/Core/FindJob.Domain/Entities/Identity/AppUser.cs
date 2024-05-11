@@ -9,6 +9,8 @@ namespace FindJob.Domain.Entities.Identity
         public string? Image { get; set; }
         public ICollection<Skill> Skills { get; set; }
         public ICollection<CompanyStaff> Staffs { get; set; }
+        public ICollection<PreferredLocation> PreferredLocations { get; set; }
+
 
     }
 

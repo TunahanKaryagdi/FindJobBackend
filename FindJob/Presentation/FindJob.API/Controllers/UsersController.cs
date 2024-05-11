@@ -6,7 +6,6 @@ using FindJob.Application.Features.WorkingUser.Queries;
 using FindJob.Application.Utilities.Enums;
 using FindJob.Domain.Entities.Identity;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -40,7 +39,7 @@ namespace FindJob.API.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "EMPLOYER")]
+        //[Authorize(Roles = "EMPLOYER")]
         public async Task<IActionResult> GetAll([FromQuery] GetAllUsersQuery getAllUsersQuery)
         {
 

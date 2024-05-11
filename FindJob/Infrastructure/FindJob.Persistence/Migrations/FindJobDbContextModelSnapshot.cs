@@ -267,6 +267,32 @@ namespace FindJob.Persistence.Migrations
                     b.ToTable("Jobs");
                 });
 
+            modelBuilder.Entity("FindJob.Domain.Entities.PreferredLocation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PreferredLocation");
+                });
+
             modelBuilder.Entity("FindJob.Domain.Entities.Qualification", b =>
                 {
                     b.Property<Guid>("Id")
@@ -521,6 +547,17 @@ namespace FindJob.Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("FindJob.Domain.Entities.PreferredLocation", b =>
+                {
+                    b.HasOne("FindJob.Domain.Entities.Identity.AppUser", "User")
+                        .WithMany("PreferredLocations")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("FindJob.Domain.Entities.Qualification", b =>
                 {
                     b.HasOne("FindJob.Domain.Entities.Job", "Job")
@@ -603,6 +640,8 @@ namespace FindJob.Persistence.Migrations
 
             modelBuilder.Entity("FindJob.Domain.Entities.Identity.AppUser", b =>
                 {
+                    b.Navigation("PreferredLocations");
+
                     b.Navigation("Skills");
 
                     b.Navigation("Staffs");

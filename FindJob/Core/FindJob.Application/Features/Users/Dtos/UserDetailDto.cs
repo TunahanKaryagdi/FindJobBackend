@@ -1,4 +1,5 @@
-﻿using FindJob.Application.Features.Skill.Dtos;
+﻿using FindJob.Application.Features.PreferredLocations.Dtos;
+using FindJob.Application.Features.Skill.Dtos;
 
 namespace FindJob.Application.Features.Users.Dtos
 {
@@ -9,5 +10,6 @@ namespace FindJob.Application.Features.Users.Dtos
         public string NameSurname { get; set; }
         public string? Image { get; set; }
         public List<SkillDto> Skills { get; set; }
+        public List<PreferredLocationDto> PreferredLocations { get; set; }
     }
 }

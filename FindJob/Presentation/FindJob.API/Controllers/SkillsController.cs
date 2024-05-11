@@ -11,7 +11,6 @@ namespace FindJob.API.Controllers
 
         private readonly IMediator _mediator;
 
-
         public SkillsController(IMediator mediator)
         {
             _mediator = mediator;

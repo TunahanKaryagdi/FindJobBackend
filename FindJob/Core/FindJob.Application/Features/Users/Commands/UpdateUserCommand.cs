@@ -13,6 +13,7 @@ namespace FindJob.Application.Features.Users.Commands
         public string Id { get; set; }
         public string NameSurname { get; set; }
         public string Email { get; set; }
+        public string PreferredLocation { get; set; }
         public IFormFile? File { get; set; }
 
         public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, IResult>
@@ -32,6 +33,7 @@ namespace FindJob.Application.Features.Users.Commands
                 AppUser user = await _userManager.FindByIdAsync(request.Id);
                 user.NameSurname = request.NameSurname;
                 user.Email = request.Email;
+
                 if (request.File != null)
                 {
                     user.Image = _fileHelper.Upload(request.File, ImageType.User);
