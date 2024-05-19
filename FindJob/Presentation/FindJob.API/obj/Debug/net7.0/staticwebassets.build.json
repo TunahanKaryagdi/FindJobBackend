@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EnlZuO0H84k/WTpWL4PY74KdRfZwzd0zwfdq4ljFuKI=",
+  "Hash": "b/Hv+m2TezRcEqv4lAqeSh78surjbJGQDfU+Cuc7U7k=",
   "Source": "FindJob.API",
   "BasePath": "_content/FindJob.API",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\Users\\46e120bf-279c-4b40-a214-28e6c4f6c9c8.png"
+    },
+    {
+      "Identity": "C:\\backend\\FindJob\\FindJob\\Presentation\\FindJob.API\\wwwroot\\Images\\Users\\5d141952-d830-4cf9-b221-f496c323f6b0.png",
+      "SourceId": "FindJob.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\backend\\FindJob\\FindJob\\Presentation\\FindJob.API\\wwwroot\\",
+      "BasePath": "_content/FindJob.API",
+      "RelativePath": "Images/Users/5d141952-d830-4cf9-b221-f496c323f6b0.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Users\\5d141952-d830-4cf9-b221-f496c323f6b0.png"
     }
   ]
 }

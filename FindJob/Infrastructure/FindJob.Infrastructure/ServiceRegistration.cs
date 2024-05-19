@@ -10,6 +10,7 @@ namespace FindJob.Infrastructure
         public static void AddInfrastructureServices(this IServiceCollection services)
         {
             services.AddScoped<ITokenHelper, TokenHelper>();
+            services.AddHttpClient();
         }
 
     }
